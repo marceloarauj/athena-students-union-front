@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import ThemeContainer from '@/components/layout/theme/themeContainer';
 import { ThemeRepository } from '@/components/layout/theme/themeRepository';
+import Header from '@/components/layout/header/header';
 
 export const metadata: Metadata = {
   title: 'Oramel',
@@ -19,7 +20,10 @@ export default async function RootLayout({
   return (
     <html lang='pt-br'>
       <body>
-        <ThemeContainer theme={theme}>{children}</ThemeContainer>
+        <ThemeContainer theme={theme}>
+          <Header />
+          {children}
+        </ThemeContainer>
       </body>
     </html>
   );

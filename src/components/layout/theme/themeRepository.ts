@@ -5,7 +5,7 @@ import { readFile } from 'fs/promises';
 
 export class ThemeRepository implements IThemeRepository {
   async getTheme(): Promise<ThemeModel> {
-    var response = await this.readFromFile();
+    const response = await this.readFromFile();
 
     return response;
   }

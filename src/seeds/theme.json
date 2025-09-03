@@ -1,4 +1,5 @@
 {
-  "primary": "#BB5500",
-  "secondary": "#14171A"
+  "primary": "#009999",
+  "secondary": "#009900",
+  "danger": "#CC3333"
 }

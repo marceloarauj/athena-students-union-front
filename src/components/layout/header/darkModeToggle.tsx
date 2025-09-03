@@ -1,6 +1,6 @@
 'use client';
 
-import { MoonIcon, SunIcon } from '@heroicons/react/16/solid';
+import { MoonStar, Sun } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 export function DarkModeToggle() {
@@ -16,13 +16,13 @@ export function DarkModeToggle() {
 
   return (
     <button
-      className='bg-btn-primary text-white p-2 rounded-full hover:bg-blue-300 transition duration-300 cursor-pointer'
+      className='bg-primary text-white p-2 rounded-full hover:bg-blue-300 transition duration-300 cursor-pointer'
       onClick={() => setDarkMode(!darkMode)}
     >
       {darkMode ? (
-        <SunIcon className='w-6 h-6 text-yellow-500' />
+        <Sun className='w-6 h-6 text-white' />
       ) : (
-        <MoonIcon className='w-6 h-6 text-white' />
+        <MoonStar className='w-6 h-6 text-white' />
       )}
     </button>
   );

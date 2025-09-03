@@ -1,0 +1,31 @@
+{
+  "Name": "Karina Souza",
+  "BirthDate": "2000-01-01",
+  "Image": "https://example.com/image.jpg",
+  "Course": "Computer Science",
+  "Email": "karina.souza@example.com",
+  "Phone": "(79)98888-5566",
+  "Period": "",
+  "Address": {
+    "Street": "123 Main St",
+    "City": "Anytown",
+    "State": "CA",
+    "Zip": "12345",
+    "Country": "USA",
+    "Complement": "Apt 4B"
+  },
+  "ActiveMerits": [
+    {
+      "Title": "Estudante de destaque",
+      "AcquisitionDate": "2025-02-01",
+      "Description": "Participação ativa em projetos de pesquisa"
+    }
+  ],
+  "AcquiredMerits": [
+    {
+      "Title": "Expert em matemática",
+      "AcquisitionDate": "2023-01-01",
+      "Description": "A média semestral foi maior que 9"
+    }
+  ]
+}
