@@ -29,7 +29,7 @@ export default function LoginPage() {
   };
 
   return (
-    <div>
+    <div className='text-black'>
       <Background />
       <Container>
         <div className='hidden lg:block relative w-full h-full rounded-l-md overflow-hidden'>
@@ -54,16 +54,17 @@ export default function LoginPage() {
               Lorem ipsum dolor sit amet consectetur, adipisicing elit. Totam impedit enim qui unde
               deleniti doloremque accusamus nostrum.
             </p>
-            <LoginInput placeholder='Usuário' {...register('login', { required: true })} />
+            <LoginInput id='user' placeholder='Usuário' {...register('user', { required: true })} />
             <LoginInput
+              id='password'
               password
               placeholder='Senha'
               {...register('password', { required: true })}
             />
-            <Button className='tracking-wider' type='submit'>
+            <Button id='confirm' className='tracking-wider' type='submit'>
               LOGIN
             </Button>
-            {(errors.login || errors.password) && (
+            {(errors.user || errors.password) && (
               <span className='text-danger'>Preencha todos os campos</span>
             )}
             <Link href='#' className=' text-blue-500 hover:text-blue-800 transition duration-300'>
