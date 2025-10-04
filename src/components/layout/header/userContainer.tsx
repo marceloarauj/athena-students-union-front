@@ -1,7 +1,12 @@
+'use client';
+
+import { useUserStore } from '@/entities/userStore';
 import { ChevronDown } from 'lucide-react';
 import Image from 'next/image';
 
 export default function UserContainer() {
+  const { user } = useUserStore();
+
   return (
     <div className='flex border border-dark-line bg-gray-700 rounded-full items-center md:pl-3'>
       <div className='w-10 h-10 rounded-full overflow-hidden relative border border-white'>
@@ -16,8 +21,8 @@ export default function UserContainer() {
       </div>
       <div className='hidden md:block border-r-1 mx-3 border-gray-500 h-2/3' />
       <div className='hidden md:flex flex-col pr-1'>
-        <span className='text-white font-bold'>Marcelo Araújo</span>
-        <span className='text-primary font-bold'>Estudante</span>
+        <span className='text-white font-bold'>{user?.FirstName + ' ' + user?.LastName}</span>
+        <span className='text-primary font-bold'>{user?.Role}</span>
       </div>
       <button className='hidden md:flex cursor-pointer justify-center items-center text-white h-full px-4'>
         <ChevronDown />

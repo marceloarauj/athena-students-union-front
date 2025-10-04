@@ -8,23 +8,28 @@ import LoginInput from '@/features/login/components/input';
 import Title from '@/components/ui/title';
 import LoadingContainer from '@/components/ui/loadingContainer';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { Login } from '@/features/login/models/loginModel';
-import { LoginService } from '@/features/login/services/loginService';
+import { LoginRequest } from '@/features/login/models/loginRequest';
 import Background from '@/features/login/components/background';
 import Container from '@/features/login/components/container';
+import { useLogin } from '@/features/login/hooks/useLogin';
+import { useRouter, usePathname } from 'next/navigation';
 
 export default function LoginPage() {
   const [loading, setLoading] = useState(false);
+  const { login } = useLogin();
+  const router = useRouter();
+  const pathname = usePathname();
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<Login>();
+  } = useForm<LoginRequest>();
 
-  const onSubmit: SubmitHandler<Login> = async data => {
+  const onSubmit: SubmitHandler<LoginRequest> = async data => {
     setLoading(true);
-    const service = new LoginService();
-    await service.login(data);
+    await login(data);
+    const section = pathname.split('/')[1];
+    router.push(`/${section}/profile`);
     setLoading(false);
   };
 

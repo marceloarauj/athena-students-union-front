@@ -9,9 +9,7 @@ export default function ProfilePage() {
     <div className='grid grid-cols-1 lg:grid-cols-3 gap-4 p-4'>
       <BioContainer className='w-full'>
         <div className='flex flex-col gap-1 items-center'>
-          <span>Marcelo de Araújo Elias</span>
-          <span>Estudante</span>
-          <div className='w-1/3 aspect-square relative mt-3 border-8 rounded-full border-gray-500'>
+          <div className='w-1/3 aspect-square relative mt-3 border-2 rounded-full border-gray-500'>
             <Image
               src={'/images/avatar.png'}
               alt='User Name'
@@ -21,6 +19,8 @@ export default function ProfilePage() {
               className='object-cover rounded-full'
             />
           </div>
+          <span>Marcelo de Araújo Elias</span>
+          <span>Estudante</span>
         </div>
       </BioContainer>
       <BioContainer className='col-span-2'>
@@ -34,11 +34,15 @@ export default function ProfilePage() {
           <span>Contato do responsável: (11) 98765-4321</span>
         </div>
       </BioContainer>
-      <BioContainer className='overflow-auto scrollbar'>
-        <DisciplineTable />
-      </BioContainer>
-      <BioContainer className='col-span-2'>
+      <BioContainer className='h-11/12 max-h-11/12'>
         <p>Desempenho Acadêmico</p>
+      </BioContainer>
+      <BioContainer className='p-0 col-span-2 max-h-11/12 overflow-hidden'>
+        <div className='h-full w-full overflow-auto scrollbar'>
+          <div className='min-w-max w-full'>
+            <DisciplineTable />
+          </div>
+        </div>
       </BioContainer>
     </div>
   );
