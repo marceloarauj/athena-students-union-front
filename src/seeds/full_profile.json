@@ -1,0 +1,78 @@
+{
+  "FullName": "Marcelo Araújo",
+  "Email": "marcelo@example.com",
+  "Phone": "(11) 98765-4321",
+  "Grade": "7º Ano",
+  "Shift": "Tarde",
+  "Guardian": "Usuário",
+  "GuardianContact": "(11) 98765-4321",
+  "disciplines": [
+    {
+      "name": "Matemática",
+      "grades": [
+        { "key": "Nota 1", "value": 8.0 },
+        { "key": "Nota 2", "value": 7.5 },
+        { "key": "Nota 3", "value": 9.0 },
+        { "key": "Nota 4", "value": 8.5 },
+        { "key": "Recu", "value": 8.4 },
+        { "key": "Média", "value": 8.25 }
+      ]
+    },
+    {
+      "name": "Português",
+      "grades": [
+        { "key": "Nota 1", "value": 9.0 },
+        { "key": "Nota 2", "value": 8.5 },
+        { "key": "Nota 3", "value": 9.5 },
+        { "key": "Nota 4", "value": 9.0 },
+        { "key": "Recu", "value": 8.4 },
+        { "key": "Média", "value": 9.0 }
+      ]
+    },
+    {
+      "name": "Ciências",
+      "grades": [
+        { "key": "Nota 1", "value": 8.0 },
+        { "key": "Nota 2", "value": 7.5 },
+        { "key": "Nota 3", "value": 9.75 },
+        { "key": "Nota 4", "value": 8.5 },
+        { "key": "Recu", "value": 8.4 },
+        { "key": "Média", "value": 8.25 }
+      ]
+    },
+    {
+      "name": "Inglês",
+      "grades": [
+        { "key": "Nota 1", "value": 9.0 },
+        { "key": "Nota 2", "value": 8.5 },
+        { "key": "Nota 3", "value": 9.5 },
+        { "key": "Nota 4", "value": 9.0 },
+        { "key": "Recu", "value": 8.4 },
+        { "key": "Média", "value": 9.0 }
+      ]
+    },
+    {
+      "name": "wwww",
+      "grades": [
+        { "key": "Nota 1", "value": 9.0 },
+        { "key": "Nota 2", "value": 8.5 },
+        { "key": "Nota 3", "value": 9.5 },
+        { "key": "Nota 4", "value": 9.0 },
+        { "key": "Recu", "value": 8.4 },
+        { "key": "Média", "value": 9.0 }
+      ]
+    },
+    {
+      "name": "oooooo",
+      "grades": [
+        { "key": "Nota 1", "value": 9.0 },
+        { "key": "Nota 2", "value": 8.5 },
+        { "key": "Nota 3", "value": 9.5 },
+        { "key": "Nota 4", "value": 9.0 },
+        { "key": "Recu", "value": 8.4 },
+        { "key": "Média", "value": 9.0 }
+      ]
+    }
+  ],
+  "AcademicPerformance": []
+}

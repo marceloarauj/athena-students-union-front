@@ -19,6 +19,7 @@ export default function LoginPage() {
   const { login } = useLogin();
   const router = useRouter();
   const pathname = usePathname();
+
   const {
     register,
     handleSubmit,
