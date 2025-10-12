@@ -1,11 +1,8 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import ThemeContainer from '@/components/layout/theme/themeContainer';
-import { ThemeRepository } from '@/components/layout/theme/themeRepository';
-import Header from '@/components/layout/header/header';
 
 export const metadata: Metadata = {
-  title: 'Oramel',
+  title: 'Athena Students Union',
   description: 'Software de gestão de ensino',
 };
 
@@ -14,17 +11,9 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const repo = new ThemeRepository();
-  const theme = await repo.getTheme();
-
   return (
     <html lang='pt-br'>
-      <body>
-        <ThemeContainer theme={theme}>
-          <Header />
-          {children}
-        </ThemeContainer>
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
