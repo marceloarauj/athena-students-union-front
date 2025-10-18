@@ -1,6 +1,6 @@
 type TitleProps = React.HTMLAttributes<HTMLHeadingElement> & {
   children: React.ReactNode;
-  tag?: 'h1' | 'h2' | 'h3';
+  tag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 };
 
 export default function Title({ children, tag: Tag = 'h1', ...props }: TitleProps) {

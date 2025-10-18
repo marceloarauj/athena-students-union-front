@@ -4,8 +4,11 @@ import { BellIcon, MenuIcon, MoonIcon, SunIcon } from 'lucide-react';
 import UserContainer from './userContainer';
 import HeaderButton from './headerButton';
 import { useEffect, useState } from 'react';
+import { usePathname } from 'next/navigation';
 
 export default function Header() {
+  const pathname = usePathname();
+
   const [darkMode, setDarkMode] = useState(true);
 
   useEffect(() => {
@@ -15,6 +18,9 @@ export default function Header() {
       document.documentElement.classList.remove('dark');
     }
   }, [darkMode]);
+
+  const hideHeader = pathname.endsWith('/login') || pathname.includes('/login/');
+  if (hideHeader) return null;
 
   return (
     <header className='w-full grid grid-cols-2 h-20 bg-transparent border-b border-dark-line px-4'>

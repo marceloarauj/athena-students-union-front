@@ -3,9 +3,9 @@
 import Image from 'next/image';
 import { BioContainer } from '@/features/profile/components/bioContainer';
 import { DisciplineTable } from '@/features/profile/components/disciplineTable';
+import InfoContainer from '@/features/profile/components/infoContainer';
 
 export default function ProfilePage() {
-  
   return (
     <div className='grid grid-cols-1 lg:grid-cols-3 gap-4 p-4'>
       <BioContainer className='w-full'>
@@ -25,14 +25,15 @@ export default function ProfilePage() {
         </div>
       </BioContainer>
       <BioContainer className='col-span-2'>
-        <p>Dados do usuário</p>
-        <div className='grid grid-cols-2 gap-1'>
-          <span>Email: marcelo@example.com</span>
-          <span>Telefone: (11) 98765-4321</span>
-          <span>Período: 7º Ano</span>
-          <span>Turno: Tarde</span>
-          <span>Responsável: Usuário</span>
-          <span>Contato do responsável: (11) 98765-4321</span>
+        <div className='grid grid-cols-2 gap-y-2 gap-x-10'>
+          <InfoContainer label='Email' value='marcelo@example.com' />
+          <InfoContainer label='Telefone' value='(11) 98765-4321' />
+          <InfoContainer label='Período' value='7º Ano' />
+          <InfoContainer label='Matrícula' value='2021001234' />
+          <InfoContainer label='Data de Nascimento' value='15/08/2008' />
+          <InfoContainer label='Turno' value='Tarde' />
+          <InfoContainer label='Responsável' value='Usuário' />
+          <InfoContainer label='Contato do responsável' value='(11) 98765-4321' />
         </div>
       </BioContainer>
       <BioContainer className='h-11/12 max-h-11/12'>
