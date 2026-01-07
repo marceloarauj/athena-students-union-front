@@ -1,5 +1,5 @@
 export type DisciplineModel = {
-  discipline: string;
+  name: string;
   grades: GradeModel[];
 };
 

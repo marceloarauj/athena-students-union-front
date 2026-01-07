@@ -1,11 +1,14 @@
 {
   "FullName": "Marcelo Araújo",
   "Email": "marcelo@example.com",
+  "Role": "Estudante",
   "Phone": "(11) 98765-4321",
-  "Grade": "7º Ano",
+  "Grade": "4º Ano",
+  "BirthDate": "11/04/1997",
   "Shift": "Tarde",
   "Guardian": "Usuário",
   "GuardianContact": "(11) 98765-4321",
+  "Registration": "22330897832",
   "disciplines": [
     {
       "name": "Matemática",

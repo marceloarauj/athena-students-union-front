@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Button from '@/components/ui/button';
 import Link from 'next/link';
@@ -13,12 +13,20 @@ import Background from '@/features/login/components/background';
 import Container from '@/features/login/components/container';
 import { useLogin } from '@/features/login/hooks/useLogin';
 import { useRouter, usePathname } from 'next/navigation';
+import { useInstitutionStore } from '@/entities/institution';
 
 export default function LoginPage() {
   const [loading, setLoading] = useState(false);
   const { login } = useLogin();
   const router = useRouter();
   const pathname = usePathname();
+  const { institution, setInstitution } = useInstitutionStore();
+
+  useEffect(() => {
+    if (institution?.alias !== pathname.split('/')[1]) {
+      setInstitution({ alias: pathname.split('/')[1] });
+    }
+  }, [pathname, institution, setInstitution]);
 
   const {
     register,
@@ -29,8 +37,7 @@ export default function LoginPage() {
   const onSubmit: SubmitHandler<LoginRequest> = async data => {
     setLoading(true);
     await login(data);
-    const section = pathname.split('/')[1];
-    router.push(`/${section}/profile`);
+    router.push(`/${institution?.alias}/profile`);
     setLoading(false);
   };
 

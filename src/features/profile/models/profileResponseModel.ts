@@ -1,21 +1,17 @@
-export interface Grade {
-  key: string;
-  value: number;
-}
-
-export interface Discipline {
-  name: string;
-  grades: Grade[];
-}
+import { AcademicPerformance } from './academicPerformanceModel';
+import { DisciplineModel } from './tableDisciplineModel';
 
 export interface ProfileResponseModel {
   FullName: string;
+  Role: string;
   Email: string;
+  Registration: string;
+  BirthDate: string;
   Phone: string;
   Grade: string;
   Shift: string;
   Guardian: string;
   GuardianContact: string;
-  disciplines: Discipline[];
-  AcademicPerformance: unknown[];
+  disciplines: DisciplineModel[];
+  AcademicPerformance: AcademicPerformance[];
 }

@@ -1,16 +1,18 @@
 @import 'tailwindcss';
 
 :root {
-  --background: #ffffff;
+  --background: #f9fafb;
   --foreground: #171717;
   --primary: #1c914d;
   --secondary: #63610e;
   --danger: #ce5454;
+  --line-color: var(--primary);
 }
 
 html.dark {
   --background: #181818;
   --foreground: #ffffff;
+  --line-color: oklch(27.8% 0.033 256.848);
 }
 
 @font-face {
@@ -34,6 +36,7 @@ html.dark {
   --color-primary-hover: color-mix(in srgb, var(--primary) 85%, black);
   --color-input-primary: var(--primary);
   --color-dark-line: var(--color-gray-800);
+  --color-line-color: var(--line-color);
   --font-family: 'Montserrat', sans-serif;
 }
 

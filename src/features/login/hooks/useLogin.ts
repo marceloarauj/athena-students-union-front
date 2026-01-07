@@ -18,3 +18,13 @@ export function useLogin() {
 
   return { login };
 }
+
+export function useLoggout(){
+  const clearUser = useUserStore(state => state.clearUser);
+  
+  function logout() {
+    clearUser();
+  }
+
+  return { logout };
+}

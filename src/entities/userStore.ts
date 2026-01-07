@@ -11,6 +11,7 @@ type UserModel = {
 type UserState = {
   user: UserModel | null;
   setUser: (user: UserModel) => void;
+  clearUser: () => void;
 };
 
 export const useUserStore = create(

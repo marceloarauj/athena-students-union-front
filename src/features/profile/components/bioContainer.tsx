@@ -7,7 +7,7 @@ export function BioContainer({ children, className = '' }: BioContainerProps) {
   const paddingClass = hasPaddingClass ? '' : 'p-4';
 
   return (
-    <div className={`${paddingClass} border border-dark-line rounded-md ${className}`.trim()}>
+    <div className={`${paddingClass} border border-line-color rounded-md ${className}`.trim()}>
       {children}
     </div>
   );
