@@ -1,19 +1,15 @@
 'use client';
 
 import { useEffect } from 'react';
+import { ThemeModel } from './theme';
 
 type ThemeProps = {
   children: React.ReactNode;
-  theme: {
-    primary: string;
-    secondary: string;
-    danger: string;
-  };
+  theme: ThemeModel;
 };
 
 export default function ThemeContainer({ children, theme }: ThemeProps) {
   useEffect(() => {
-    document.documentElement.classList.add('dark');
     if (theme) {
       document.documentElement.style.setProperty('--primary', theme.primary);
       document.documentElement.style.setProperty('--secondary', theme.secondary);

@@ -1,0 +1,31 @@
+{
+  "holidays": [
+    { "id": "77777777-0000-0000-0000-000000000001", "name": "Ano Novo", "date": "2025-01-01", "type": 1, "isRecurring": true },
+    { "id": "77777777-0000-0000-0000-000000000002", "name": "Carnaval", "date": "2025-03-03", "type": 1, "isRecurring": false },
+    { "id": "77777777-0000-0000-0000-000000000003", "name": "Tiradentes", "date": "2025-04-21", "type": 1, "isRecurring": true },
+    { "id": "77777777-0000-0000-0000-000000000004", "name": "Dia do Trabalho", "date": "2025-05-01", "type": 1, "isRecurring": true },
+    { "id": "77777777-0000-0000-0000-000000000005", "name": "Corpus Christi", "date": "2025-06-19", "type": 1, "isRecurring": false },
+    { "id": "77777777-0000-0000-0000-000000000006", "name": "Independência do Brasil", "date": "2025-09-07", "type": 1, "isRecurring": true },
+    { "id": "77777777-0000-0000-0000-000000000007", "name": "Nossa Senhora Aparecida", "date": "2025-10-12", "type": 1, "isRecurring": true },
+    { "id": "77777777-0000-0000-0000-000000000008", "name": "Finados", "date": "2025-11-02", "type": 1, "isRecurring": true },
+    { "id": "77777777-0000-0000-0000-000000000009", "name": "Proclamação da República", "date": "2025-11-15", "type": 1, "isRecurring": true },
+    { "id": "77777777-0000-0000-0000-000000000010", "name": "Natal", "date": "2025-12-25", "type": 1, "isRecurring": true },
+    { "id": "77777777-0000-0000-0000-000000000011", "name": "Aniversário da Cidade", "date": "2025-08-15", "type": 3, "isRecurring": true }
+  ],
+  "recesses": [
+    {
+      "id": "77777777-1111-0000-0000-000000000001",
+      "programEditionId": "88888888-0000-0000-0000-000000000001",
+      "name": "Recesso de Julho",
+      "startDate": "2025-07-14",
+      "endDate": "2025-07-18"
+    },
+    {
+      "id": "77777777-1111-0000-0000-000000000002",
+      "programEditionId": "88888888-0000-0000-0000-000000000001",
+      "name": "Semana de Provas",
+      "startDate": "2025-11-24",
+      "endDate": "2025-11-28"
+    }
+  ]
+}

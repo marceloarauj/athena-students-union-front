@@ -1,0 +1,50 @@
+[
+  {
+    "id": "11111111-0000-0000-0000-000000000001",
+    "name": "Ensino Fundamental",
+    "type": 1,
+    "periodType": 2,
+    "hasWeeklySchedule": true,
+    "durationYears": 9,
+    "minCompletionPercent": 75,
+    "minSchoolDays": 200,
+    "isActive": true,
+    "createdAt": "2024-01-10T08:00:00Z"
+  },
+  {
+    "id": "11111111-0000-0000-0000-000000000002",
+    "name": "Ensino Médio",
+    "type": 1,
+    "periodType": 1,
+    "hasWeeklySchedule": true,
+    "durationYears": 3,
+    "minCompletionPercent": 75,
+    "minSchoolDays": 200,
+    "isActive": true,
+    "createdAt": "2024-01-10T08:00:00Z"
+  },
+  {
+    "id": "11111111-0000-0000-0000-000000000003",
+    "name": "Técnico em Informática",
+    "type": 2,
+    "periodType": 4,
+    "hasWeeklySchedule": false,
+    "durationYears": 2,
+    "minCompletionPercent": 70,
+    "minSchoolDays": null,
+    "isActive": true,
+    "createdAt": "2024-01-15T08:00:00Z"
+  },
+  {
+    "id": "11111111-0000-0000-0000-000000000004",
+    "name": "MBA em Gestão Escolar",
+    "type": 3,
+    "periodType": 3,
+    "hasWeeklySchedule": false,
+    "durationYears": 1,
+    "minCompletionPercent": 80,
+    "minSchoolDays": null,
+    "isActive": true,
+    "createdAt": "2024-02-01T08:00:00Z"
+  }
+]

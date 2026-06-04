@@ -1,0 +1,40 @@
+[
+  {
+    "id": 1,
+    "description": "Média Simples (Bimestral)",
+    "formula": "( N1 + N2 ) / 2 >= 5",
+    "tokens": [
+      { "type": "paren", "value": "(" },
+      { "type": "variable", "key": "N1", "label": "Nota 1ª Av." },
+      { "type": "operator", "value": "+" },
+      { "type": "variable", "key": "N2", "label": "Nota 2ª Av." },
+      { "type": "paren", "value": ")" },
+      { "type": "operator", "value": "/" },
+      { "type": "number", "value": "2" },
+      { "type": "comparison", "value": ">=" },
+      { "type": "number", "value": "5" }
+    ],
+    "isPrimary": true
+  },
+  {
+    "id": 2,
+    "description": "Média Quadrimestral com Recuperação",
+    "formula": "( N1 + N2 + N3 + N4 ) / 4 >= 5",
+    "tokens": [
+      { "type": "paren", "value": "(" },
+      { "type": "variable", "key": "N1", "label": "Nota 1ª Av." },
+      { "type": "operator", "value": "+" },
+      { "type": "variable", "key": "N2", "label": "Nota 2ª Av." },
+      { "type": "operator", "value": "+" },
+      { "type": "variable", "key": "N3", "label": "Nota 3ª Av." },
+      { "type": "operator", "value": "+" },
+      { "type": "variable", "key": "N4", "label": "Nota 4ª Av." },
+      { "type": "paren", "value": ")" },
+      { "type": "operator", "value": "/" },
+      { "type": "number", "value": "4" },
+      { "type": "comparison", "value": ">=" },
+      { "type": "number", "value": "5" }
+    ],
+    "isPrimary": false
+  }
+]

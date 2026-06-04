@@ -1,0 +1,17 @@
+{
+  "classes": [
+    { "id": 1, "discipline": "Matemática", "time": "07:30 - 09:10", "date": "2026-04-11", "turma": "3A" },
+    { "id": 2, "discipline": "Português", "time": "09:30 - 11:10", "date": "2026-04-11", "turma": "2B" },
+    { "id": 3, "discipline": "Biologia", "time": "13:00 - 14:40", "date": "2026-04-11", "turma": "1C" }
+  ],
+  "students": [
+    { "id": 1, "name": "Ana Carolina Silva", "matricula": "2026001", "status": "present" },
+    { "id": 2, "name": "Bruno Ferreira Santos", "matricula": "2026002", "status": "present" },
+    { "id": 3, "name": "Carla Menezes Oliveira", "matricula": "2026003", "status": "absent" },
+    { "id": 4, "name": "Diego Alves Costa", "matricula": "2026004", "status": "late" },
+    { "id": 5, "name": "Eduarda Lima Pereira", "matricula": "2026005", "status": "present" },
+    { "id": 6, "name": "Felipe Rocha Martins", "matricula": "2026006", "status": "present" },
+    { "id": 7, "name": "Gabriela Souza Neves", "matricula": "2026007", "status": "absent" },
+    { "id": 8, "name": "Henrique Castro Barbosa", "matricula": "2026008", "status": "present" }
+  ]
+}

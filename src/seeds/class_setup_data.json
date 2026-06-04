@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1, "name": "Turma 3A - Manhã", "discipline": "Matemática", "teacher": "João Silva",
+    "startDate": "2026-02-03", "endDate": "2026-11-28",
+    "frequency": "diaria", "daysOfWeek": ["segunda", "quarta", "sexta"], "totalClasses": 120
+  },
+  {
+    "id": 2, "name": "Turma 2B - Tarde", "discipline": "Português", "teacher": "Maria Santos",
+    "startDate": "2026-02-03", "endDate": "2026-11-28",
+    "frequency": "3x", "daysOfWeek": ["terça", "quinta"], "totalClasses": 80
+  },
+  {
+    "id": 3, "name": "Turma 1C - Manhã", "discipline": "Biologia", "teacher": "Carlos Oliveira",
+    "startDate": "2026-02-03", "endDate": "2026-11-28",
+    "frequency": "2x", "daysOfWeek": ["segunda", "quarta"], "totalClasses": 60
+  },
+  {
+    "id": 4, "name": "Turma 3A - Tarde", "discipline": "Física", "teacher": "Pedro Alves",
+    "startDate": "2026-02-03", "endDate": "2026-11-28",
+    "frequency": "2x", "daysOfWeek": ["terça", "quinta"], "totalClasses": 60
+  }
+]

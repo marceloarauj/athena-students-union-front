@@ -1,0 +1,35 @@
+[
+  {
+    "id": 1,
+    "alias": "mock",
+    "name": "Instituição Demo",
+    "document": "00.000.000/0001-00",
+    "paymentFormat": "mensal",
+    "primaryColor": "#2277DD",
+    "saveLogs": false,
+    "active": true,
+    "createdAt": "2024-01-15"
+  },
+  {
+    "id": 2,
+    "alias": "colegio-estadual",
+    "name": "Colégio Estadual Central",
+    "document": "12.345.678/0001-99",
+    "paymentFormat": "anual",
+    "primaryColor": "#1c914d",
+    "saveLogs": true,
+    "active": true,
+    "createdAt": "2024-03-20"
+  },
+  {
+    "id": 3,
+    "alias": "instituto-tecnico",
+    "name": "Instituto Técnico Federal",
+    "document": "98.765.432/0001-11",
+    "paymentFormat": "gratis",
+    "primaryColor": "#8B5CF6",
+    "saveLogs": false,
+    "active": false,
+    "createdAt": "2024-06-01"
+  }
+]

@@ -1,0 +1,35 @@
+[
+  {
+    "classId": 1,
+    "students": [
+      { "studentId": 1, "studentName": "Ana Carolina Silva",     "matricula": "2026001", "b1": 8.5, "b2": 7.0,  "b3": null, "b4": null },
+      { "studentId": 2, "studentName": "Bruno Ferreira Santos",  "matricula": "2026002", "b1": 6.0, "b2": 7.5,  "b3": null, "b4": null },
+      { "studentId": 3, "studentName": "Carla Menezes Oliveira", "matricula": "2026003", "b1": 9.0, "b2": 9.5,  "b3": null, "b4": null },
+      { "studentId": 4, "studentName": "Diego Rocha Pereira",    "matricula": "2026004", "b1": 5.5, "b2": 6.0,  "b3": null, "b4": null }
+    ]
+  },
+  {
+    "classId": 2,
+    "students": [
+      { "studentId": 5, "studentName": "Eduarda Lima Costa",     "matricula": "2026005", "b1": 7.0, "b2": 8.0,  "b3": null, "b4": null },
+      { "studentId": 6, "studentName": "Felipe Nunes Barbosa",   "matricula": "2026006", "b1": 8.0, "b2": 8.5,  "b3": null, "b4": null },
+      { "studentId": 7, "studentName": "Gabriela Torres Sousa",  "matricula": "2026007", "b1": 6.5, "b2": 7.0,  "b3": null, "b4": null }
+    ]
+  },
+  {
+    "classId": 3,
+    "students": [
+      { "studentId": 8,  "studentName": "Henrique Alves Martins", "matricula": "2026008", "b1": 9.5, "b2": 9.0,  "b3": null, "b4": null },
+      { "studentId": 9,  "studentName": "Isabela Cardoso Ramos",  "matricula": "2026009", "b1": 7.5, "b2": 8.0,  "b3": null, "b4": null },
+      { "studentId": 10, "studentName": "João Victor Mendes",     "matricula": "2026010", "b1": 6.0, "b2": 5.5,  "b3": null, "b4": null }
+    ]
+  },
+  {
+    "classId": 4,
+    "students": [
+      { "studentId": 1, "studentName": "Ana Carolina Silva",     "matricula": "2026001", "b1": 7.0, "b2": 7.5,  "b3": null, "b4": null },
+      { "studentId": 2, "studentName": "Bruno Ferreira Santos",  "matricula": "2026002", "b1": 5.0, "b2": 6.5,  "b3": null, "b4": null },
+      { "studentId": 3, "studentName": "Carla Menezes Oliveira", "matricula": "2026003", "b1": 8.0, "b2": 8.5,  "b3": null, "b4": null }
+    ]
+  }
+]

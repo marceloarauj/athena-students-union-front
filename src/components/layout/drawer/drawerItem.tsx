@@ -1,32 +1,27 @@
 'use client';
 
-import { TvIcon } from 'lucide-react';
-import React from 'react';
+import { cn } from '@/lib/utils';
 
 type DrawerItemProps = {
   text: string;
   onClick?: () => void;
   icon?: React.ReactNode;
+  danger?: boolean;
 };
 
-export default function DrawerItem({ text, onClick, icon }: DrawerItemProps) {
-  const baseIconClasses = 'group-hover:scale-110 transition-transform duration-300';
-
-  const iconElement =
-    icon && React.isValidElement<{ className?: string }>(icon) ? (
-      React.cloneElement(icon, {
-        className: `${(icon.props?.className ?? '').trim()} ${baseIconClasses}`.trim(),
-      })
-    ) : (
-      <TvIcon className={baseIconClasses} />
-    );
-
+export default function DrawerItem({ text, onClick, icon, danger }: DrawerItemProps) {
   return (
-    <div className='flex flex-row gap-3 w-100 cursor-pointer group' onClick={onClick}>
-      {iconElement}
-      <span className='text-xl origin-left transition-transform duration-300 group-hover:scale-110'>
-        {text}
-      </span>
-    </div>
+    <button
+      onClick={onClick}
+      className={cn(
+        'flex items-center gap-3 w-full px-3 py-2 rounded-lg text-sm font-medium transition-colors text-left cursor-pointer',
+        danger
+          ? 'text-danger hover:bg-danger/10'
+          : 'text-foreground hover:bg-primary/10 hover:text-primary'
+      )}
+    >
+      <span className='shrink-0'>{icon}</span>
+      <span>{text}</span>
+    </button>
   );
 }

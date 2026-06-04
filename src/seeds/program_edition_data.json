@@ -1,0 +1,59 @@
+{
+  "editions": [
+    {
+      "id": "88888888-0000-0000-0000-000000000001",
+      "academicProgramId": "11111111-0000-0000-0000-000000000001",
+      "name": "Ensino Fundamental 2025",
+      "startDate": "2025-02-03",
+      "endDate": "2025-12-19",
+      "status": 2,
+      "publishedAt": "2025-01-20T10:00:00Z",
+      "createdAt": "2025-01-10T08:00:00Z"
+    },
+    {
+      "id": "88888888-0000-0000-0000-000000000002",
+      "academicProgramId": "11111111-0000-0000-0000-000000000002",
+      "name": "Ensino Médio 2025",
+      "startDate": "2025-02-03",
+      "endDate": "2025-12-19",
+      "status": 1,
+      "publishedAt": null,
+      "createdAt": "2025-01-10T08:00:00Z"
+    },
+    {
+      "id": "88888888-0000-0000-0000-000000000003",
+      "academicProgramId": "11111111-0000-0000-0000-000000000003",
+      "name": "Técnico em Informática — Turma 2025",
+      "startDate": "2025-03-01",
+      "endDate": "2026-02-28",
+      "status": 0,
+      "publishedAt": null,
+      "createdAt": "2025-01-15T08:00:00Z"
+    }
+  ],
+  "periods": [
+    { "id": "88888888-1111-0000-0000-000000000001", "programEditionId": "88888888-0000-0000-0000-000000000001", "number": 1, "name": "1º Bimestre", "startDate": "2025-02-03", "endDate": "2025-04-11", "schoolDays": 45 },
+    { "id": "88888888-1111-0000-0000-000000000002", "programEditionId": "88888888-0000-0000-0000-000000000001", "number": 2, "name": "2º Bimestre", "startDate": "2025-04-22", "endDate": "2025-06-27", "schoolDays": 42 },
+    { "id": "88888888-1111-0000-0000-000000000003", "programEditionId": "88888888-0000-0000-0000-000000000001", "number": 3, "name": "3º Bimestre", "startDate": "2025-07-21", "endDate": "2025-09-26", "schoolDays": 45 },
+    { "id": "88888888-1111-0000-0000-000000000004", "programEditionId": "88888888-0000-0000-0000-000000000001", "number": 4, "name": "4º Bimestre", "startDate": "2025-10-06", "endDate": "2025-12-19", "schoolDays": 50 }
+  ],
+  "curriculum": [
+    { "id": "88888888-2222-0000-0000-000000000001", "programEditionId": "88888888-0000-0000-0000-000000000001", "subjectId": "33333333-0000-0000-0000-000000000001", "gradeOrYear": 6, "weeklyHours": 5, "totalHours": 100 },
+    { "id": "88888888-2222-0000-0000-000000000002", "programEditionId": "88888888-0000-0000-0000-000000000001", "subjectId": "33333333-0000-0000-0000-000000000002", "gradeOrYear": 6, "weeklyHours": 5, "totalHours": 100 },
+    { "id": "88888888-2222-0000-0000-000000000003", "programEditionId": "88888888-0000-0000-0000-000000000001", "subjectId": "33333333-0000-0000-0000-000000000003", "gradeOrYear": 6, "weeklyHours": 3, "totalHours": 60 }
+  ],
+  "enrollments": [
+    { "id": "88888888-3333-0000-0000-000000000001", "studentId": "aaaaaaaa-2222-0000-0000-000000000001", "programEditionId": "88888888-0000-0000-0000-000000000001", "gradeOrYear": 6, "status": 1, "enrolledAt": "2025-01-20T10:00:00Z" },
+    { "id": "88888888-3333-0000-0000-000000000002", "studentId": "aaaaaaaa-2222-0000-0000-000000000002", "programEditionId": "88888888-0000-0000-0000-000000000001", "gradeOrYear": 6, "status": 1, "enrolledAt": "2025-01-20T10:00:00Z" },
+    { "id": "88888888-3333-0000-0000-000000000003", "studentId": "aaaaaaaa-2222-0000-0000-000000000003", "programEditionId": "88888888-0000-0000-0000-000000000001", "gradeOrYear": 7, "status": 1, "enrolledAt": "2025-01-20T10:00:00Z" }
+  ],
+  "classGroups": [
+    { "id": "88888888-4444-0000-0000-000000000001", "programEditionId": "88888888-0000-0000-0000-000000000001", "name": "6º Ano A", "gradeOrYear": 6, "roomId": "66666666-0000-0000-0000-000000000001", "shiftId": "55555555-0000-0000-0000-000000000001", "maxStudents": 35, "studentCount": 28 },
+    { "id": "88888888-4444-0000-0000-000000000002", "programEditionId": "88888888-0000-0000-0000-000000000001", "name": "6º Ano B", "gradeOrYear": 6, "roomId": "66666666-0000-0000-0000-000000000002", "shiftId": "55555555-0000-0000-0000-000000000001", "maxStudents": 35, "studentCount": 30 },
+    { "id": "88888888-4444-0000-0000-000000000003", "programEditionId": "88888888-0000-0000-0000-000000000001", "name": "7º Ano A", "gradeOrYear": 7, "roomId": "66666666-0000-0000-0000-000000000003", "shiftId": "55555555-0000-0000-0000-000000000002", "maxStudents": 40, "studentCount": 32 }
+  ],
+  "progress": [
+    { "id": "88888888-5555-0000-0000-000000000001", "enrollmentId": "88888888-3333-0000-0000-000000000001", "programPeriodId": "88888888-1111-0000-0000-000000000001", "status": 1, "finalGrade": 8.5, "completionPercent": 100, "createdAt": "2025-04-12T10:00:00Z" },
+    { "id": "88888888-5555-0000-0000-000000000002", "enrollmentId": "88888888-3333-0000-0000-000000000002", "programPeriodId": "88888888-1111-0000-0000-000000000001", "status": 1, "finalGrade": 7.2, "completionPercent": 100, "createdAt": "2025-04-12T10:00:00Z" }
+  ]
+}

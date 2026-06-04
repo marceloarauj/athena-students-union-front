@@ -1,0 +1,69 @@
+[
+  {
+    "id": 1,
+    "name": "João Silva",
+    "email": "joao.silva@escola.edu.br",
+    "role": "professor",
+    "avatar": "",
+    "phone": "(11) 91234-5678",
+    "permissions": {
+      "alteracoes": ["edit_name", "access_grades"],
+      "sistema": ["manage_reports"]
+    }
+  },
+  {
+    "id": 2,
+    "name": "Maria Santos",
+    "email": "maria.santos@escola.edu.br",
+    "role": "professor",
+    "avatar": "",
+    "phone": "(11) 92345-6789",
+    "permissions": {
+      "alteracoes": ["edit_name", "access_grades", "access_calendar"],
+      "sistema": []
+    }
+  },
+  {
+    "id": 3,
+    "name": "Carlos Oliveira",
+    "email": "carlos.oliveira@escola.edu.br",
+    "role": "funcionario",
+    "avatar": "",
+    "phone": "(11) 93456-7890",
+    "permissions": {
+      "alteracoes": ["edit_name"],
+      "sistema": ["manage_payments", "manage_users"]
+    }
+  },
+  {
+    "id": 4,
+    "name": "Ana Paula Costa",
+    "email": "ana.costa@aluno.escola.edu.br",
+    "role": "aluno",
+    "avatar": "",
+    "phone": "(11) 94567-8901",
+    "period": "Manhã",
+    "register": "2024001",
+    "birthdate": "2010-03-15",
+    "shift": "Manhã",
+    "responsibleName": "Paulo Costa",
+    "permissions": {
+      "alteracoes": ["access_grades"],
+      "sistema": []
+    }
+  },
+  {
+    "id": 5,
+    "name": "Roberto Costa",
+    "email": "roberto.costa@escola.edu.br",
+    "role": "pai",
+    "avatar": "",
+    "phone": "(11) 95678-9012",
+    "responsibleName": "Roberto Costa",
+    "childrenIds": [4],
+    "permissions": {
+      "alteracoes": ["access_grades"],
+      "sistema": []
+    }
+  }
+]

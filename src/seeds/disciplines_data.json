@@ -1,0 +1,81 @@
+[
+  {
+    "id": 1, "name": "Matemática", "code": "MAT", "description": "Álgebra, geometria e cálculo",
+    "teacherCount": 3, "classes": 8, "color": "#3B82F6",
+    "topics": [
+      { "id": 1, "title": "Conjuntos numéricos" },
+      { "id": 2, "title": "Funções e gráficos" },
+      { "id": 3, "title": "Geometria plana" },
+      { "id": 4, "title": "Trigonometria" },
+      { "id": 5, "title": "Progressões aritméticas e geométricas" }
+    ]
+  },
+  {
+    "id": 2, "name": "Português", "code": "POR", "description": "Gramática, redação e literatura",
+    "teacherCount": 2, "classes": 6, "color": "#10B981",
+    "topics": [
+      { "id": 1, "title": "Morfologia e classes gramaticais" },
+      { "id": 2, "title": "Sintaxe da oração" },
+      { "id": 3, "title": "Redação dissertativa" },
+      { "id": 4, "title": "Literatura brasileira" }
+    ]
+  },
+  {
+    "id": 3, "name": "Biologia", "code": "BIO", "description": "Ciências da vida e natureza",
+    "teacherCount": 2, "classes": 5, "color": "#22C55E",
+    "topics": [
+      { "id": 1, "title": "Citologia e organelas celulares" },
+      { "id": 2, "title": "Genética e hereditariedade" },
+      { "id": 3, "title": "Ecologia e ecossistemas" },
+      { "id": 4, "title": "Evolução das espécies" }
+    ]
+  },
+  {
+    "id": 4, "name": "História", "code": "HIS", "description": "História do Brasil e mundial",
+    "teacherCount": 2, "classes": 5, "color": "#F59E0B",
+    "topics": [
+      { "id": 1, "title": "Brasil Colônia" },
+      { "id": 2, "title": "Independência e Império" },
+      { "id": 3, "title": "República Velha" },
+      { "id": 4, "title": "Segunda Guerra Mundial" }
+    ]
+  },
+  {
+    "id": 5, "name": "Geografia", "code": "GEO", "description": "Cartografia e geopolítica",
+    "teacherCount": 1, "classes": 4, "color": "#8B5CF6",
+    "topics": [
+      { "id": 1, "title": "Cartografia e projeções" },
+      { "id": 2, "title": "Clima e biomas" },
+      { "id": 3, "title": "Geopolítica mundial" }
+    ]
+  },
+  {
+    "id": 6, "name": "Física", "code": "FIS", "description": "Mecânica, termodinâmica e óptica",
+    "teacherCount": 2, "classes": 5, "color": "#EF4444",
+    "topics": [
+      { "id": 1, "title": "Cinemática" },
+      { "id": 2, "title": "Dinâmica e Leis de Newton" },
+      { "id": 3, "title": "Termodinâmica" },
+      { "id": 4, "title": "Óptica geométrica" }
+    ]
+  },
+  {
+    "id": 7, "name": "Química", "code": "QUI", "description": "Química orgânica e inorgânica",
+    "teacherCount": 2, "classes": 5, "color": "#EC4899",
+    "topics": [
+      { "id": 1, "title": "Tabela periódica e ligações" },
+      { "id": 2, "title": "Reações químicas" },
+      { "id": 3, "title": "Estequiometria" },
+      { "id": 4, "title": "Química orgânica" }
+    ]
+  },
+  {
+    "id": 8, "name": "Inglês", "code": "ING", "description": "Língua inglesa e conversação",
+    "teacherCount": 1, "classes": 4, "color": "#06B6D4",
+    "topics": [
+      { "id": 1, "title": "Tempos verbais" },
+      { "id": 2, "title": "Vocabulário e expressões idiomáticas" },
+      { "id": 3, "title": "Interpretação de texto" }
+    ]
+  }
+]

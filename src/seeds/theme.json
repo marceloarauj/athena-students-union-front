@@ -1,5 +1,7 @@
 {
   "primary": "#2277DD",
   "secondary": "#FFD700",
-  "danger": "#FF4500"
+  "danger": "#FF4500",
+  "logo": "/images/logo.png",
+  "name": "Athena Student Union"
 }

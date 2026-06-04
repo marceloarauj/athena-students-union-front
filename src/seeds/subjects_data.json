@@ -1,0 +1,17 @@
+[
+  { "id": "33333333-0000-0000-0000-000000000001", "programId": "11111111-0000-0000-0000-000000000001", "name": "Matemática", "code": "MAT", "isActive": true },
+  { "id": "33333333-0000-0000-0000-000000000002", "programId": "11111111-0000-0000-0000-000000000001", "name": "Língua Portuguesa", "code": "POR", "isActive": true },
+  { "id": "33333333-0000-0000-0000-000000000003", "programId": "11111111-0000-0000-0000-000000000001", "name": "Ciências", "code": "CIE", "isActive": true },
+  { "id": "33333333-0000-0000-0000-000000000004", "programId": "11111111-0000-0000-0000-000000000001", "name": "História", "code": "HIS", "isActive": true },
+  { "id": "33333333-0000-0000-0000-000000000005", "programId": "11111111-0000-0000-0000-000000000001", "name": "Geografia", "code": "GEO", "isActive": true },
+  { "id": "33333333-0000-0000-0000-000000000006", "programId": "11111111-0000-0000-0000-000000000002", "name": "Matemática", "code": "MAT", "isActive": true },
+  { "id": "33333333-0000-0000-0000-000000000007", "programId": "11111111-0000-0000-0000-000000000002", "name": "Língua Portuguesa", "code": "POR", "isActive": true },
+  { "id": "33333333-0000-0000-0000-000000000008", "programId": "11111111-0000-0000-0000-000000000002", "name": "Física", "code": "FIS", "isActive": true },
+  { "id": "33333333-0000-0000-0000-000000000009", "programId": "11111111-0000-0000-0000-000000000002", "name": "Química", "code": "QUI", "isActive": true },
+  { "id": "33333333-0000-0000-0000-000000000010", "programId": "11111111-0000-0000-0000-000000000002", "name": "Biologia", "code": "BIO", "isActive": true },
+  { "id": "33333333-0000-0000-0000-000000000011", "programId": "11111111-0000-0000-0000-000000000003", "name": "Lógica de Programação", "code": "LOG", "isActive": true },
+  { "id": "33333333-0000-0000-0000-000000000012", "programId": "11111111-0000-0000-0000-000000000003", "name": "Banco de Dados", "code": "BDB", "isActive": true },
+  { "id": "33333333-0000-0000-0000-000000000013", "programId": "11111111-0000-0000-0000-000000000003", "name": "Redes de Computadores", "code": "RDC", "isActive": true },
+  { "id": "33333333-0000-0000-0000-000000000014", "programId": "11111111-0000-0000-0000-000000000004", "name": "Gestão Pedagógica", "code": "GPE", "isActive": true },
+  { "id": "33333333-0000-0000-0000-000000000015", "programId": "11111111-0000-0000-0000-000000000004", "name": "Legislação Educacional", "code": "LEG", "isActive": true }
+]

@@ -1,0 +1,47 @@
+[
+  {
+    "id": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
+    "startDate": "2025-02-01",
+    "endDate": "2025-12-20",
+    "lessonStartTime": "08:00",
+    "lessonEndTime": "09:40",
+    "daysOfWeek": 34,
+    "timesPerWeek": 2,
+    "lessonCount": null,
+    "isActive": true,
+    "institutionId": "inst-mock",
+    "disciplineId": null,
+    "disciplineName": null,
+    "createdAt": "2025-01-15T10:00:00"
+  },
+  {
+    "id": "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb",
+    "startDate": "2025-02-01",
+    "endDate": null,
+    "lessonStartTime": "10:00",
+    "lessonEndTime": "11:40",
+    "daysOfWeek": 42,
+    "timesPerWeek": 3,
+    "lessonCount": 60,
+    "isActive": true,
+    "institutionId": "inst-mock",
+    "disciplineId": "disc-1",
+    "disciplineName": "Matemática",
+    "createdAt": "2025-01-20T14:00:00"
+  },
+  {
+    "id": "cccccccc-cccc-cccc-cccc-cccccccccccc",
+    "startDate": "2025-02-01",
+    "endDate": "2025-06-30",
+    "lessonStartTime": "14:00",
+    "lessonEndTime": "15:40",
+    "daysOfWeek": 20,
+    "timesPerWeek": 2,
+    "lessonCount": null,
+    "isActive": false,
+    "institutionId": "inst-mock",
+    "disciplineId": null,
+    "disciplineName": null,
+    "createdAt": "2024-12-10T09:00:00"
+  }
+]

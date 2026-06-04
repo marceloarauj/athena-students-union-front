@@ -1,0 +1,60 @@
+[
+  {
+    "id": 1,
+    "name": "Professor",
+    "alias": "professor",
+    "defaultPermissions": {
+      "alteracoes": ["edit_name", "edit_email", "access_grades", "access_calendar", "access_attendance"],
+      "sistema": ["manage_reports"]
+    },
+    "fields": [
+      { "key": "FIELD_EMAIL", "required": true },
+      { "key": "FIELD_PHONE", "required": false }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Funcionário",
+    "alias": "funcionario",
+    "defaultPermissions": {
+      "alteracoes": ["edit_name", "edit_email"],
+      "sistema": ["manage_payments", "manage_users"]
+    },
+    "fields": [
+      { "key": "FIELD_EMAIL", "required": true },
+      { "key": "FIELD_PHONE", "required": false }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Aluno",
+    "alias": "aluno",
+    "defaultPermissions": {
+      "alteracoes": ["access_grades", "access_calendar"],
+      "sistema": []
+    },
+    "fields": [
+      { "key": "FIELD_EMAIL", "required": true },
+      { "key": "FIELD_PHONE", "required": false },
+      { "key": "FIELD_PERIOD", "required": false },
+      { "key": "FIELD_REGISTER", "required": true },
+      { "key": "FIELD_BIRTHDATE", "required": false },
+      { "key": "FIELD_SHIFT", "required": false },
+      { "key": "RESPONSIBLE_NAME", "required": true }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Pai/Responsável",
+    "alias": "pai",
+    "defaultPermissions": {
+      "alteracoes": ["access_grades"],
+      "sistema": []
+    },
+    "fields": [
+      { "key": "FIELD_EMAIL", "required": true },
+      { "key": "FIELD_PHONE", "required": false },
+      { "key": "RESPONSIBLE_NAME", "required": false }
+    ]
+  }
+]

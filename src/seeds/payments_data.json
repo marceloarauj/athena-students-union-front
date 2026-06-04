@@ -1,0 +1,14 @@
+{
+  "invoices": [
+    { "id": "INV-2026-04", "month": "Abril 2026", "amount": 850.00, "status": "pending", "dueDate": "2026-04-15" },
+    { "id": "INV-2026-03", "month": "Março 2026", "amount": 850.00, "status": "paid", "dueDate": "2026-03-15" },
+    { "id": "INV-2026-02", "month": "Fevereiro 2026", "amount": 850.00, "status": "paid", "dueDate": "2026-02-15" },
+    { "id": "INV-2026-01", "month": "Janeiro 2026", "amount": 850.00, "status": "paid", "dueDate": "2026-01-15" },
+    { "id": "INV-2025-12", "month": "Dezembro 2025", "amount": 850.00, "status": "paid", "dueDate": "2025-12-15" }
+  ],
+  "summary": {
+    "totalPaid": 3400.00,
+    "totalPending": 850.00,
+    "totalAnnual": 10200.00
+  }
+}

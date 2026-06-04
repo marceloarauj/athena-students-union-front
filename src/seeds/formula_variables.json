@@ -1,0 +1,8 @@
+[
+  { "key": "N1", "label": "Nota 1ª Av." },
+  { "key": "N2", "label": "Nota 2ª Av." },
+  { "key": "N3", "label": "Nota 3ª Av." },
+  { "key": "N4", "label": "Nota 4ª Av." },
+  { "key": "REC", "label": "Recuperação" },
+  { "key": "FREQ", "label": "Frequência %" }
+]

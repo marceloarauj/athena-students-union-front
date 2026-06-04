@@ -1,0 +1,64 @@
+[
+  {
+    "id": 1,
+    "title": "Reunião de Pais e Mestres",
+    "type": "reuniao",
+    "description": "Reunião bimestral para apresentação dos resultados acadêmicos e entrega de boletins.",
+    "allDay": false,
+    "startDate": "2026-05-20",
+    "endDate": "2026-05-20",
+    "startTime": "19:00",
+    "endTime": "21:00"
+  },
+  {
+    "id": 2,
+    "title": "Avaliação Bimestral — Matemática e Física",
+    "type": "prova",
+    "description": "Primeira avaliação do 2º bimestre abrangendo as disciplinas de Matemática e Física para o 3º ano.",
+    "allDay": false,
+    "startDate": "2026-05-27",
+    "endDate": "2026-05-27",
+    "startTime": "08:00",
+    "endTime": "10:00"
+  },
+  {
+    "id": 3,
+    "title": "Corpus Christi",
+    "type": "feriado",
+    "description": "Feriado nacional. Não haverá aulas.",
+    "allDay": true,
+    "startDate": "2026-06-04",
+    "endDate": "2026-06-04"
+  },
+  {
+    "id": 4,
+    "title": "Palestra: Carreiras em Tecnologia",
+    "type": "palestra",
+    "description": "Profissionais da área de TI irão apresentar suas trajetórias e oportunidades de carreira para os alunos do Ensino Médio.",
+    "allDay": false,
+    "startDate": "2026-06-10",
+    "endDate": "2026-06-10",
+    "startTime": "14:00",
+    "endTime": "16:30"
+  },
+  {
+    "id": 5,
+    "title": "Excursão ao Museu de Ciências",
+    "type": "excursao",
+    "description": "Visita educativa ao museu. Saída às 8h da escola. Trazer autorização assinada.",
+    "allDay": true,
+    "startDate": "2026-06-18",
+    "endDate": "2026-06-18"
+  },
+  {
+    "id": 6,
+    "title": "Conselho de Classe — 1º Bimestre",
+    "type": "reuniao",
+    "description": "Reunião interna de professores e coordenação para avaliação do desempenho geral dos alunos.",
+    "allDay": false,
+    "startDate": "2026-04-30",
+    "endDate": "2026-04-30",
+    "startTime": "17:00",
+    "endTime": "19:00"
+  }
+]

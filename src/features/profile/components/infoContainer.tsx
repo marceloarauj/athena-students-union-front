@@ -1,5 +1,3 @@
-import Title from '@/components/ui/title';
-
 type InfoContainerProps = {
   label: string;
   value: string;
@@ -7,10 +5,9 @@ type InfoContainerProps = {
 
 export default function InfoContainer({ label, value }: InfoContainerProps) {
   return (
-    <div className='flex flex-col'>
-      <Title tag='h6'>{label}</Title>
-      <span className='font-bold'>{value}</span>
-      <div className='border-b w-full border-primary'></div>
+    <div className='space-y-0.5 pb-3 border-b border-border last:border-0 last:pb-0'>
+      <p className='text-xs font-medium text-primary'>{label}</p>
+      <p className='text-sm font-semibold text-foreground'>{value || '—'}</p>
     </div>
   );
 }

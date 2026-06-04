@@ -1,0 +1,26 @@
+[
+  {
+    "id": "TKT-001", "title": "Erro ao lançar notas do bimestre", "category": "Sistema",
+    "status": "open", "priority": "high",
+    "created": "2026-04-10", "author": "Maria Santos",
+    "description": "Ao tentar salvar as notas do 2º bimestre, o sistema retorna erro 500."
+  },
+  {
+    "id": "TKT-002", "title": "Aluno não aparece na chamada", "category": "Chamada",
+    "status": "in_progress", "priority": "medium",
+    "created": "2026-04-09", "author": "João Silva",
+    "description": "O aluno Bruno Ferreira Santos (matrícula 2026002) não aparece na lista de chamada da turma 3A."
+  },
+  {
+    "id": "TKT-003", "title": "Fatura de março com valor incorreto", "category": "Financeiro",
+    "status": "resolved", "priority": "critical",
+    "created": "2026-04-05", "author": "Roberto Costa",
+    "description": "A fatura do mês de março está com R$1.200,00 ao invés do valor correto de R$850,00."
+  },
+  {
+    "id": "TKT-004", "title": "Solicitação de nova disciplina no sistema", "category": "Cadastro",
+    "status": "open", "priority": "low",
+    "created": "2026-04-08", "author": "Diretoria",
+    "description": "Precisamos cadastrar a disciplina de Filosofia para o 3º ano."
+  }
+]

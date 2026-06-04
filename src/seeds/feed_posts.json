@@ -1,0 +1,46 @@
+[
+  {
+    "id": 1,
+    "author": "Coordenação Pedagógica",
+    "role": "Administração",
+    "avatar": "",
+    "time": "Há 2 horas",
+    "content": "Lembramos a todos os professores que as notas do primeiro bimestre devem ser lançadas no sistema até a próxima sexta-feira, dia 15. Caso tenham dúvidas sobre o novo módulo de avaliação, procurem a secretaria.",
+    "likes": 12,
+    "comments": 3,
+    "isImportant": true
+  },
+  {
+    "id": 2,
+    "author": "Maria Santos",
+    "role": "Professora de Biologia",
+    "avatar": "",
+    "time": "Ontem às 14:30",
+    "content": "Feira de Ciências 2026! As inscrições para os projetos dos alunos do Ensino Médio já estão abertas. Procurem a coordenação para mais detalhes e formulários de inscrição.",
+    "likes": 34,
+    "comments": 8,
+    "isImportant": false
+  },
+  {
+    "id": 3,
+    "author": "Departamento de TI",
+    "role": "Suporte",
+    "avatar": "",
+    "time": "Ontem às 09:15",
+    "content": "Atualização do Sistema: O módulo de chamadas foi atualizado para permitir correção retroativa de faltas em até 48 horas. Agradecemos o feedback de todos que solicitaram esta melhoria!",
+    "likes": 45,
+    "comments": 1,
+    "isImportant": false
+  },
+  {
+    "id": 4,
+    "author": "Diretoria",
+    "role": "Gestão",
+    "avatar": "",
+    "time": "Há 3 dias",
+    "content": "Comunicado: O calendário letivo foi atualizado com os feriados municipais. Por favor, acessem a seção de Calendário para verificar as datas revisadas.",
+    "likes": 28,
+    "comments": 5,
+    "isImportant": true
+  }
+]
