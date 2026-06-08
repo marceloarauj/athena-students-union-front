@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useTheme } from 'next-themes';
 import { useInstitutionStore } from '@/entities/institution';
+import { usePermissionGuard } from '@/features/auth/hooks/usePermissionGuard';
 import { useRoles } from '@/features/roles/hooks/useRoles';
 import { useFormulas } from '@/features/settings/hooks/useFormulas';
 import { FormulaTab } from '@/features/settings/components/FormulaTab';
@@ -56,6 +57,7 @@ function ToggleSwitch({
 }
 
 export default function SettingsPage() {
+  const allowed = usePermissionGuard('SHOW_SCREEN_SETTINGS');
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   useEffect(() => { setMounted(true); }, []);
@@ -111,6 +113,8 @@ export default function SettingsPage() {
     await deleteRole(id);
     toast.success('Perfil removido.');
   }
+
+  if (!allowed) return null;
 
   return (
     <div className='p-6 max-w-3xl mx-auto space-y-6'>

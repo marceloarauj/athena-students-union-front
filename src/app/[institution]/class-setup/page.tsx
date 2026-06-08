@@ -2,6 +2,8 @@
 
 import { useState } from 'react';
 import { useInstitutionStore } from '@/entities/institution';
+import { usePermission } from '@/features/auth/hooks/usePermission';
+import { usePermissionGuard } from '@/features/auth/hooks/usePermissionGuard';
 import { useClassSetup } from '@/features/classSetup/hooks/useClassSetup';
 import { useDisciplines } from '@/features/disciplines/hooks/useDisciplines';
 import { useDayLessonScheduleConfig } from '@/features/dayLessonScheduleConfig/hooks/useDayLessonScheduleConfig';
@@ -24,8 +26,10 @@ const frequencyLabels: Record<string, string> = {
 };
 
 export default function ClassSetupPage() {
+  const allowed = usePermissionGuard('SHOW_SCREEN_CLASS');
   const { institution } = useInstitutionStore();
   const alias = institution?.alias ?? '';
+  const { hasPermission } = usePermission();
 
   const { classes, loading: loadingClasses, deleteClass } = useClassSetup(alias);
   const { disciplines } = useDisciplines(alias);
@@ -41,6 +45,8 @@ export default function ClassSetupPage() {
   const [dayLessonClass, setDayLessonClass] = useState<SchoolClass | null>(null);
 
   const activeConfigs = configs.filter(c => c.isActive).length;
+
+  if (!allowed) return null;
 
   return (
     <div className='p-6 max-w-5xl mx-auto space-y-6'>
@@ -69,11 +75,13 @@ export default function ClassSetupPage() {
 
         {/* Tab: Turmas */}
         <TabsContent value='turmas' className='mt-4'>
-          <div className='flex justify-end mb-4'>
-            <button className='px-4 py-2 bg-primary text-white rounded-lg text-sm font-medium hover:bg-primary/90 transition-colors'>
-              + Nova Turma
-            </button>
-          </div>
+          {hasPermission('CREATE_CLASS') && (
+            <div className='flex justify-end mb-4'>
+              <button className='px-4 py-2 bg-primary text-white rounded-lg text-sm font-medium hover:bg-primary/90 transition-colors'>
+                + Nova Turma
+              </button>
+            </div>
+          )}
 
           {loadingClasses ? (
             <div className='space-y-3'>
@@ -122,15 +130,19 @@ export default function ClassSetupPage() {
                           Notas
                         </button>
                         <div className='flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity'>
-                          <button className='p-1.5 rounded text-muted-foreground hover:text-primary hover:bg-muted transition-colors'>
-                            <Pencil size={14} />
-                          </button>
-                          <button
-                            onClick={() => deleteClass(c.id)}
-                            className='p-1.5 rounded text-muted-foreground hover:text-danger hover:bg-muted transition-colors'
-                          >
-                            <Trash2 size={14} />
-                          </button>
+                          {hasPermission('UPDATE_CLASS') && (
+                            <button className='p-1.5 rounded text-muted-foreground hover:text-primary hover:bg-muted transition-colors'>
+                              <Pencil size={14} />
+                            </button>
+                          )}
+                          {hasPermission('DELETE_CLASS') && (
+                            <button
+                              onClick={() => deleteClass(c.id)}
+                              className='p-1.5 rounded text-muted-foreground hover:text-danger hover:bg-muted transition-colors'
+                            >
+                              <Trash2 size={14} />
+                            </button>
+                          )}
                         </div>
                       </div>
                     </div>

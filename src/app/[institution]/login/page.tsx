@@ -9,6 +9,7 @@ export default async function LoginPage() {
     <LoginForm
       institutionName={theme.name ?? 'Athena Student Union'}
       logo={theme.logo ?? '/images/logo.png'}
+      version={process.env.NEXT_PUBLIC_APP_VERSION ?? '1.0.0'}
     />
   );
 }

@@ -2,6 +2,7 @@
 
 import { useInstitutionStore } from '@/entities/institution';
 import { usePayments } from '@/features/payments/hooks/usePayments';
+import { usePermissionGuard } from '@/features/auth/hooks/usePermissionGuard';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
@@ -10,8 +11,11 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { AlertCircle, Download } from 'lucide-react';
 
 export default function PaymentsPage() {
+  const allowed = usePermissionGuard('SHOW_SCREEN_PAYMENTS');
   const { institution } = useInstitutionStore();
   const { data, loading } = usePayments(institution?.alias ?? '');
+
+  if (!allowed) return null;
 
   if (loading) return (
     <div className='p-6 max-w-4xl mx-auto space-y-4'>

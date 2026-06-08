@@ -17,6 +17,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 import Calendar, { CalendarEvent as makeCalendarEvent, CalendarEventType } from '@/components/ui/calendar';
 import { EventInput } from '@fullcalendar/core/index.js';
 import { AlertTriangle, BookOpen, CalendarCheck, ClipboardList, User } from 'lucide-react';
+import { usePermissionGuard } from '@/features/auth/hooks/usePermissionGuard';
 
 const gradeStatusMap: Record<GradeStatus, { label: string; variant: 'success' | 'warning' | 'danger' }> = {
   approved: { label: 'Aprovado', variant: 'success' },
@@ -239,8 +240,11 @@ function ChildPanel({ child }: { child: Child }) {
 }
 
 export default function ParentalControlPage() {
+  const allowed = usePermissionGuard('SHOW_SCREEN_PARENTAL_CONTROL');
   const { institution } = useInstitutionStore();
   const { children, loading } = useParentalControl(institution?.alias ?? '');
+
+  if (!allowed) return null;
 
   if (loading) {
     return (

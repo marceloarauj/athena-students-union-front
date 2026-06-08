@@ -19,9 +19,10 @@ import GoogleLoginButton from './googleLoginButton';
 interface LoginFormProps {
   institutionName: string;
   logo: string;
+  version: string;
 }
 
-export default function LoginForm({ institutionName, logo }: LoginFormProps) {
+export default function LoginForm({ institutionName, logo, version }: LoginFormProps) {
   const [loading, setLoading] = useState(false);
   const { login } = useLogin();
   const router = useRouter();
@@ -104,6 +105,8 @@ export default function LoginForm({ institutionName, logo }: LoginFormProps) {
             </div>
 
             <GoogleLoginButton />
+
+            <span className='text-xs text-gray-400 select-none'>v{version}</span>
           </form>
         </LoadingContainer>
       </Container>

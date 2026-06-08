@@ -49,7 +49,7 @@ export function DisciplineTopicsModal({ discipline, onSave, onClose }: Props) {
             Tópicos Lecionados
           </DialogTitle>
           <DialogDescription>
-            Gerencie os tópicos da disciplina{' '}
+            Tópicos da disciplina{' '}
             <span className='font-medium text-foreground'>{discipline.name}</span>.
           </DialogDescription>
         </DialogHeader>

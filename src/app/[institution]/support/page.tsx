@@ -3,6 +3,8 @@
 import { useState } from 'react';
 import { useInstitutionStore } from '@/entities/institution';
 import { useSupport } from '@/features/support/hooks/useSupport';
+import { usePermission } from '@/features/auth/hooks/usePermission';
+import { usePermissionGuard } from '@/features/auth/hooks/usePermissionGuard';
 import { SupportTicket, TicketPriority, TicketStatus } from '@/features/support/models/supportModel';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -23,10 +25,14 @@ const priorityConfig: Record<TicketPriority, { label: string; variant: 'danger' 
 };
 
 export default function SupportPage() {
+  const allowed = usePermissionGuard('SHOW_SCREEN_SUPPORT');
   const { institution } = useInstitutionStore();
   const { tickets, loading } = useSupport(institution?.alias ?? '');
+  const { hasPermission } = usePermission();
   const [filterStatus, setFilterStatus] = useState<TicketStatus | 'all'>('all');
   const [search, setSearch] = useState('');
+
+  if (!allowed) return null;
 
   const filtered = tickets.filter(t => {
     const matchStatus = filterStatus === 'all' || t.status === filterStatus;
@@ -42,9 +48,11 @@ export default function SupportPage() {
           <h1 className='text-2xl font-bold text-foreground'>Suporte</h1>
           <p className='text-sm text-muted-foreground mt-1'>Gerencie chamados e solicitações.</p>
         </div>
-        <button className='px-4 py-2 bg-primary text-white rounded-lg text-sm font-medium hover:bg-primary-hover transition-colors'>
-          + Novo Chamado
-        </button>
+        {hasPermission('OPEN_SUPPORT_TICKET') && (
+          <button className='px-4 py-2 bg-primary text-white rounded-lg text-sm font-medium hover:bg-primary-hover transition-colors'>
+            + Novo Chamado
+          </button>
+        )}
       </div>
 
       {/* Filters */}

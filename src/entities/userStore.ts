@@ -6,6 +6,8 @@ type UserModel = {
   LastName: string;
   Email: string;
   Role: string;
+  Token: string;
+  Permissions: string[];
 };
 
 type UserState = {

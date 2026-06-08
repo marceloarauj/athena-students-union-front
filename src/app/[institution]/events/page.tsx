@@ -3,6 +3,8 @@
 import { useState } from 'react';
 import { useInstitutionStore } from '@/entities/institution';
 import { useEvents } from '@/features/events/hooks/useEvents';
+import { usePermission } from '@/features/auth/hooks/usePermission';
+import { usePermissionGuard } from '@/features/auth/hooks/usePermissionGuard';
 import { EventFormModal } from '@/features/events/components/EventFormModal';
 import type { CalendarEvent } from '@/features/events/models/eventModel';
 import { EVENT_TYPE_CONFIG } from '@/features/events/models/eventModel';
@@ -20,13 +22,17 @@ function formatDate(dateStr: string) {
 }
 
 export default function EventsPage() {
+  const allowed = usePermissionGuard('SHOW_SCREEN_EVENTS');
   const { institution } = useInstitutionStore();
   const alias = institution?.alias ?? '';
   const { events, loading, saveEvent, deleteEvent } = useEvents(alias);
+  const { hasPermission } = usePermission();
 
   const [filter, setFilter] = useState<Filter>('upcoming');
   const [showCreate, setShowCreate] = useState(false);
   const [editing, setEditing] = useState<CalendarEvent | undefined>();
+
+  if (!allowed) return null;
 
   const sorted = [...events].sort((a, b) => a.startDate.localeCompare(b.startDate));
 
@@ -46,15 +52,16 @@ export default function EventsPage() {
           <h1 className='text-2xl font-bold text-foreground'>Eventos</h1>
           <p className='text-sm text-muted-foreground mt-1'>Gerencie os eventos e atividades da instituição.</p>
         </div>
-        <button
-          onClick={() => setShowCreate(true)}
-          className='flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg text-sm font-medium hover:bg-primary/90 transition-colors'
-        >
-          <CalendarDays size={15} /> Novo Evento
-        </button>
+        {hasPermission('CREATE_EVENT') && (
+          <button
+            onClick={() => setShowCreate(true)}
+            className='flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg text-sm font-medium hover:bg-primary/90 transition-colors'
+          >
+            <CalendarDays size={15} /> Novo Evento
+          </button>
+        )}
       </div>
 
-      {/* Filter tabs */}
       <div className='flex gap-1 p-1 bg-muted rounded-lg w-fit'>
         {([
           ['all', `Todos (${sorted.length})`],
@@ -76,7 +83,6 @@ export default function EventsPage() {
         ))}
       </div>
 
-      {/* List */}
       {loading ? (
         <div className='space-y-3'>
           {Array.from({ length: 4 }).map((_, i) => <Skeleton key={i} className='h-24 w-full rounded-xl' />)}
@@ -100,11 +106,8 @@ export default function EventsPage() {
                   isPast && 'opacity-60',
                 )}
               >
-                {/* Color bar */}
                 <div className='w-1 shrink-0' style={{ backgroundColor: cfg.color }} />
-
                 <div className='flex-1 flex items-start gap-4 px-4 py-4 min-w-0'>
-                  {/* Date block */}
                   <div className='shrink-0 text-center w-12'>
                     <p className='text-xs font-bold text-muted-foreground uppercase leading-none'>
                       {new Date(event.startDate + 'T12:00:00').toLocaleString('pt-BR', { month: 'short' })}
@@ -116,11 +119,7 @@ export default function EventsPage() {
                       {new Date(event.startDate + 'T12:00:00').toLocaleString('pt-BR', { weekday: 'short' })}
                     </p>
                   </div>
-
-                  {/* Divider */}
                   <div className='w-px self-stretch bg-border shrink-0' />
-
-                  {/* Content */}
                   <div className='flex-1 min-w-0'>
                     <div className='flex items-center gap-2 mb-1 flex-wrap'>
                       <span
@@ -130,34 +129,23 @@ export default function EventsPage() {
                         {cfg.label}
                       </span>
                       {event.allDay && (
-                        <span className='text-xs px-2 py-0.5 rounded-full bg-muted text-muted-foreground'>
-                          Dia inteiro
-                        </span>
+                        <span className='text-xs px-2 py-0.5 rounded-full bg-muted text-muted-foreground'>Dia inteiro</span>
                       )}
                       {isMultiDay && (
-                        <span className='text-xs text-muted-foreground'>
-                          até {formatDate(event.endDate)}
-                        </span>
+                        <span className='text-xs text-muted-foreground'>até {formatDate(event.endDate)}</span>
                       )}
                     </div>
-
                     <p className='text-sm font-semibold text-foreground'>{event.title}</p>
-
                     {!event.allDay && event.startTime && (
                       <p className='flex items-center gap-1 text-xs text-muted-foreground mt-0.5'>
                         <Clock size={11} />
                         {event.startTime}{event.endTime ? `–${event.endTime}` : ''}
                       </p>
                     )}
-
                     {event.description && (
-                      <p className='text-xs text-muted-foreground mt-1.5 line-clamp-2'>
-                        {event.description}
-                      </p>
+                      <p className='text-xs text-muted-foreground mt-1.5 line-clamp-2'>{event.description}</p>
                     )}
                   </div>
-
-                  {/* Actions */}
                   <div className='flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity shrink-0'>
                     <button
                       onClick={() => setEditing(event)}
@@ -179,12 +167,8 @@ export default function EventsPage() {
         </div>
       )}
 
-      {showCreate && (
-        <EventFormModal onSave={saveEvent} onClose={() => setShowCreate(false)} />
-      )}
-      {editing && (
-        <EventFormModal event={editing} onSave={saveEvent} onClose={() => setEditing(undefined)} />
-      )}
+      {showCreate && <EventFormModal onSave={saveEvent} onClose={() => setShowCreate(false)} />}
+      {editing && <EventFormModal event={editing} onSave={saveEvent} onClose={() => setEditing(undefined)} />}
     </div>
   );
 }

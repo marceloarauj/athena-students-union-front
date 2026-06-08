@@ -2,14 +2,18 @@
 
 import { useInstitutionStore } from '@/entities/institution';
 import { useSchedule } from '@/features/schedule/hooks/useSchedule';
+import { usePermissionGuard } from '@/features/auth/hooks/usePermissionGuard';
 import { ScheduleEvent } from '@/features/schedule/models/scheduleModel';
 import Calendar, { CalendarEvent as makeCalendarEvent, CalendarEventType } from '@/components/ui/calendar';
 import { EventInput } from '@fullcalendar/core/index.js';
 import { Skeleton } from '@/components/ui/skeleton';
 
 export default function SchedulePage() {
+  const allowed = usePermissionGuard('SHOW_SCREEN_CALENDAR');
   const { institution } = useInstitutionStore();
   const { events, loading } = useSchedule(institution?.alias ?? '');
+
+  if (!allowed) return null;
 
   const calendarEvents: EventInput[] = events.map((e: ScheduleEvent) =>
     makeCalendarEvent(CalendarEventType[e.type as keyof typeof CalendarEventType], e.title, e.date, e.startTime, e.endTime, e.id)

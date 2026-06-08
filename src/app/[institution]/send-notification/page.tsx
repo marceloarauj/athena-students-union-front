@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useInstitutionStore } from '@/entities/institution';
 import { useSendNotification } from '@/features/sendNotification/hooks/useSendNotification';
+import { usePermissionGuard } from '@/features/auth/hooks/usePermissionGuard';
 import { useRoles } from '@/features/roles/hooks/useRoles';
 import { RoleSelector } from '@/features/sendNotification/components/RoleSelector';
 import { UserSelector } from '@/features/sendNotification/components/UserSelector';
@@ -13,6 +14,7 @@ import { Send, Users, UserCheck } from 'lucide-react';
 type Mode = 'groups' | 'specific';
 
 export default function SendNotificationPage() {
+  const allowed = usePermissionGuard('SHOW_SCREEN_NOTIFICATIONS');
   const { institution } = useInstitutionStore();
   const alias = institution?.alias ?? '';
   const {
@@ -25,6 +27,8 @@ export default function SendNotificationPage() {
   const [mode, setMode] = useState<Mode>('groups');
   const [title, setTitle] = useState('');
   const [message, setMessage] = useState('');
+
+  if (!allowed) return null;
 
   const destinatariosCount = mode === 'groups' ? targetRecipients.length : selectedUserIds.length;
   const hasRecipients = mode === 'groups' ? selectedRoles.length > 0 : selectedUserIds.length > 0;

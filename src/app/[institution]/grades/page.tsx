@@ -2,6 +2,7 @@
 
 import { useInstitutionStore } from '@/entities/institution';
 import { useGrades } from '@/features/grades/hooks/useGrades';
+import { usePermissionGuard } from '@/features/auth/hooks/usePermissionGuard';
 import { GradeReport, GradeStatus } from '@/features/grades/models/gradeModel';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -23,8 +24,11 @@ function GradeCell({ value }: { value: number }) {
 }
 
 export default function GradesPage() {
+  const allowed = usePermissionGuard('SHOW_SCREEN_SCORE');
   const { institution } = useInstitutionStore();
   const { grades, loading } = useGrades(institution?.alias ?? '');
+
+  if (!allowed) return null;
 
   const avg = grades.length > 0
     ? grades.reduce((s, g) => s + g.average, 0) / grades.length

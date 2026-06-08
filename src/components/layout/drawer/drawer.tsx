@@ -20,6 +20,7 @@ import DrawerItem from './drawerItem';
 import { useRouter } from 'next/navigation';
 import { useInstitutionStore } from '@/entities/institution';
 import { useUserStore } from '@/entities/userStore';
+import { usePermission } from '@/features/auth/hooks/usePermission';
 import Image from 'next/image';
 
 interface DrawerProps {
@@ -28,24 +29,25 @@ interface DrawerProps {
 }
 
 const NAV_ITEMS = [
-  { label: 'Início', path: 'home', icon: <Home size={18} /> },
-  { label: 'Calendário', path: 'schedule', icon: <CalendarCheck size={18} /> },
-  { label: 'Notas', path: 'grades', icon: <BookOpen size={18} /> },
-  { label: 'Controle Parental', path: 'parental-control', icon: <Baby size={18} /> },
-  { label: 'Pagamentos', path: 'payments', icon: <CreditCard size={18} /> },
-  { label: 'Notificações', path: 'send-notification', icon: <Send size={18} /> },
-  { label: 'Eventos', path: 'events', icon: <Calendar size={18} /> },
-  { label: 'Disciplinas', path: 'disciplines', icon: <Layers size={18} /> },
-  { label: 'Turmas', path: 'class-setup', icon: <GraduationCap size={18} /> },
-  { label: 'Institucional', path: 'institucional', icon: <Building2 size={18} /> },
-  { label: 'Suporte', path: 'support', icon: <HeadphonesIcon size={18} /> },
-  { label: 'Usuários', path: 'users', icon: <UserCircle2 size={18} /> },
-  { label: 'Configurações', path: 'settings', icon: <Settings size={18} /> },
+  { label: 'Início',             path: 'home',              icon: <Home size={18} /> },
+  { label: 'Calendário',         path: 'schedule',           icon: <CalendarCheck size={18} />,  permission: 'SHOW_SCREEN_CALENDAR' },
+  { label: 'Notas',              path: 'grades',             icon: <BookOpen size={18} />,        permission: 'SHOW_SCREEN_SCORE' },
+  { label: 'Controle Parental',  path: 'parental-control',   icon: <Baby size={18} />,            permission: 'SHOW_SCREEN_PARENTAL_CONTROL' },
+  { label: 'Pagamentos',         path: 'payments',           icon: <CreditCard size={18} />,      permission: 'SHOW_SCREEN_PAYMENTS' },
+  { label: 'Notificações',       path: 'send-notification',  icon: <Send size={18} />,            permission: 'SHOW_SCREEN_NOTIFICATIONS' },
+  { label: 'Eventos',            path: 'events',             icon: <Calendar size={18} />,        permission: 'SHOW_SCREEN_EVENTS' },
+  { label: 'Disciplinas',        path: 'disciplines',        icon: <Layers size={18} />,          permission: 'SHOW_SCREEN_DISCIPLINE' },
+  { label: 'Turmas',             path: 'class-setup',        icon: <GraduationCap size={18} />,   permission: 'SHOW_SCREEN_CLASS' },
+  { label: 'Institucional',      path: 'institucional',      icon: <Building2 size={18} />,       permission: 'SHOW_SCREEN_INSTITUTIONAL' },
+  { label: 'Suporte',            path: 'support',            icon: <HeadphonesIcon size={18} />,  permission: 'SHOW_SCREEN_SUPPORT' },
+  { label: 'Usuários',           path: 'users',              icon: <UserCircle2 size={18} />,     permission: 'SHOW_SCREEN_USERS' },
+  { label: 'Configurações',      path: 'settings',           icon: <Settings size={18} />,        permission: 'SHOW_SCREEN_SETTINGS' },
 ];
 
 export default function Drawer({ open, onClose }: DrawerProps) {
   const { institution } = useInstitutionStore();
   const { clearUser } = useUserStore();
+  const { hasPermission } = usePermission();
   const router = useRouter();
 
   function navigateTo(path: string) {
@@ -58,6 +60,10 @@ export default function Drawer({ open, onClose }: DrawerProps) {
     clearUser();
     router.push(`/${institution?.alias}/login`);
   }
+
+  const visibleItems = NAV_ITEMS.filter(
+    item => !item.permission || hasPermission(item.permission),
+  );
 
   return (
     <>
@@ -92,7 +98,7 @@ export default function Drawer({ open, onClose }: DrawerProps) {
 
         {/* Navigation */}
         <nav className='flex-1 overflow-y-auto px-3 py-4 space-y-1'>
-          {NAV_ITEMS.map(item => (
+          {visibleItems.map(item => (
             <DrawerItem
               key={item.path}
               text={item.label}

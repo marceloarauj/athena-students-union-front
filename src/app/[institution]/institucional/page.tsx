@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useInstitutionStore } from '@/entities/institution';
+import { usePermissionGuard } from '@/features/auth/hooks/usePermissionGuard';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 
 /* Program Edition */
@@ -50,9 +51,12 @@ const HOLIDAY_COLORS: Record<HolidayType, string> = {
 };
 
 export default function InstitucionalPage() {
+  const allowed = usePermissionGuard('SHOW_SCREEN_INSTITUTIONAL');
   const { institution } = useInstitutionStore();
   const alias = institution?.alias ?? '';
   const router = useRouter();
+
+  if (!allowed) return null;
 
   return (
     <div className='p-6 max-w-5xl mx-auto space-y-5'>

@@ -7,6 +7,8 @@ import { useRoles } from '@/features/roles/hooks/useRoles';
 import { useTeacher } from '@/features/teacher/hooks/useTeacher';
 import { useShift } from '@/features/shift/hooks/useShift';
 import { useAcademicProgram } from '@/features/academicProgram/hooks/useAcademicProgram';
+import { usePermission } from '@/features/auth/hooks/usePermission';
+import { usePermissionGuard } from '@/features/auth/hooks/usePermissionGuard';
 import { AppUser } from '@/features/users/models/appUserModel';
 import { Teacher } from '@/features/teacher/models/teacherModel';
 import { TeacherAvailabilityModal } from '@/features/teacher/components/TeacherAvailabilityModal';
@@ -28,6 +30,7 @@ const ROLE_VARIANTS: Record<string, 'default' | 'info' | 'success' | 'muted'> = 
 };
 
 export default function UsersPage() {
+  const allowed = usePermissionGuard('SHOW_SCREEN_USERS');
   const { institution } = useInstitutionStore();
   const alias = institution?.alias ?? '';
 
@@ -36,6 +39,7 @@ export default function UsersPage() {
   const { teachers, createTeacher, setSubjects, setAvailability } = useTeacher(alias);
   const { shifts } = useShift(alias);
   const { programs } = useAcademicProgram(alias);
+  const { hasPermission } = usePermission();
 
   const [filterRole, setFilterRole] = useState<string>('all');
   const [search, setSearch] = useState('');
@@ -43,6 +47,8 @@ export default function UsersPage() {
   const [showCreate, setShowCreate] = useState(false);
   const [availTarget, setAvailTarget] = useState<Teacher | null>(null);
   const [subjectsTarget, setSubjectsTarget] = useState<Teacher | null>(null);
+
+  if (!allowed) return null;
 
   const filtered = users.filter(u => {
     const matchRole = filterRole === 'all' || u.role === filterRole;
@@ -61,11 +67,7 @@ export default function UsersPage() {
   }
 
   async function handleActivateTeacher(user: AppUser) {
-    const created = await createTeacher({
-      userId: String(user.id),
-      name: user.name,
-      email: user.email,
-    });
+    const created = await createTeacher({ userId: String(user.id), name: user.name, email: user.email });
     toast.success('Professor ativado.');
     setAvailTarget(created);
   }
@@ -92,13 +94,14 @@ export default function UsersPage() {
           <h1 className='text-2xl font-bold text-foreground'>Gerenciar Usuários</h1>
           <p className='text-sm text-muted-foreground mt-1'>Adicione, edite ou remova usuários da plataforma.</p>
         </div>
-        <button
-          onClick={() => setShowCreate(true)}
-          className='flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-white text-sm font-medium hover:bg-primary/90 transition-colors shrink-0'
-        >
-          <UserPlus size={16} />
-          Novo Usuário
-        </button>
+        {hasPermission('CREATE_USER') && (
+          <button
+            onClick={() => setShowCreate(true)}
+            className='flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-white text-sm font-medium hover:bg-primary/90 transition-colors shrink-0'
+          >
+            <UserPlus size={16} /> Novo Usuário
+          </button>
+        )}
       </div>
 
       <div className='flex flex-col sm:flex-row gap-3'>
@@ -154,16 +157,20 @@ export default function UsersPage() {
                       </Badge>
                     </div>
                     <div className='flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity'>
-                      <button onClick={() => setEditingUser(user)} className='p-1 rounded text-muted-foreground hover:text-primary hover:bg-muted transition-colors'>
-                        <Pencil size={14} />
-                      </button>
-                      <button onClick={() => handleDelete(user.id)} className='p-1 rounded text-muted-foreground hover:text-danger hover:bg-muted transition-colors'>
-                        <Trash2 size={14} />
-                      </button>
+                      {hasPermission('UPDATE_USER') && (
+                        <button onClick={() => setEditingUser(user)} className='p-1 rounded text-muted-foreground hover:text-primary hover:bg-muted transition-colors'>
+                          <Pencil size={14} />
+                        </button>
+                      )}
+                      {hasPermission('DELETE_USER') && (
+                        <button onClick={() => handleDelete(user.id)} className='p-1 rounded text-muted-foreground hover:text-danger hover:bg-muted transition-colors'>
+                          <Trash2 size={14} />
+                        </button>
+                      )}
                     </div>
                   </div>
 
-                  {isProfessor && (
+                  {isProfessor && hasPermission('UPDATE_USER') && (
                     <div className='flex gap-1.5 pt-1 border-t border-border'>
                       {teacher ? (
                         <>
@@ -201,35 +208,18 @@ export default function UsersPage() {
             );
           })}
           {filtered.length === 0 && (
-            <p className='col-span-3 text-center text-sm text-muted-foreground py-12'>
-              Nenhum usuário encontrado.
-            </p>
+            <p className='col-span-3 text-center text-sm text-muted-foreground py-12'>Nenhum usuário encontrado.</p>
           )}
         </div>
       )}
 
-      {editingUser && (
-        <EditUserModal user={editingUser} roles={roles} onSave={handleSaveEdit} onClose={() => setEditingUser(null)} />
-      )}
-      {showCreate && (
-        <CreateUserModal roles={roles} onSave={handleCreate} onClose={() => setShowCreate(false)} />
-      )}
+      {editingUser && <EditUserModal user={editingUser} roles={roles} onSave={handleSaveEdit} onClose={() => setEditingUser(null)} />}
+      {showCreate && <CreateUserModal roles={roles} onSave={handleCreate} onClose={() => setShowCreate(false)} />}
       {availTarget && (
-        <TeacherAvailabilityModal
-          teacher={availTarget}
-          shifts={shifts}
-          onSave={setAvailability}
-          onClose={() => setAvailTarget(null)}
-        />
+        <TeacherAvailabilityModal teacher={availTarget} shifts={shifts} onSave={setAvailability} onClose={() => setAvailTarget(null)} />
       )}
       {subjectsTarget && (
-        <TeacherSubjectsModal
-          teacher={subjectsTarget}
-          programs={programs}
-          institution={alias}
-          onSave={setSubjects}
-          onClose={() => setSubjectsTarget(null)}
-        />
+        <TeacherSubjectsModal teacher={subjectsTarget} programs={programs} institution={alias} onSave={setSubjects} onClose={() => setSubjectsTarget(null)} />
       )}
     </div>
   );
