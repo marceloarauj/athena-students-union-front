@@ -2,6 +2,7 @@
 
 
 import { useInstitutionStore } from '@/entities/institution';
+import { useUserStore } from '@/entities/userStore';
 import { useGrades } from '@/features/grades/hooks/useGrades';
 import { usePermissionGuard } from '@/features/auth/hooks/usePermissionGuard';
 import { GradeReport, GradeStatus } from '@/features/grades/models/gradeModel';
@@ -12,6 +13,8 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { Download } from 'lucide-react';
 import { useReportCardLayout } from '@/features/reportCard/hooks/useReportCardLayout';
 import type { ReportCardLayoutConfig } from '@/features/reportCard/models/reportCardLayoutModel';
+import { isMock } from '@/lib/serviceFactory';
+import { toast } from 'sonner';
 
 function buildBoletimHtml(layout: ReportCardLayoutConfig, grades: GradeReport[]): string {
   const components = layout.components
@@ -107,23 +110,54 @@ function GradeCell({ value }: { value: number }) {
 export default function GradesPage() {
   const allowed = usePermissionGuard('SHOW_SCREEN_SCORE');
   const { institution } = useInstitutionStore();
+  const { user } = useUserStore();
   const { grades, loading } = useGrades(institution?.alias ?? '');
   const { layout } = useReportCardLayout(institution?.alias ?? '');
 
   if (!allowed) return null;
 
-  function handleDownloadBoletim() {
-    const printWindow = window.open('', '_blank');
-    if (!printWindow || !layout) return;
+  async function handleDownloadBoletim() {
+    if (isMock(institution?.alias)) {
+      const printWindow = window.open('', '_blank');
+      if (!printWindow || !layout) return;
+      const html = buildBoletimHtml(layout, grades);
+      printWindow.document.write(html);
+      printWindow.document.close();
+      printWindow.focus();
+      setTimeout(() => {
+        printWindow.print();
+        printWindow.close();
+      }, 500);
+      return;
+    }
 
-    const html = buildBoletimHtml(layout, grades);
-    printWindow.document.write(html);
-    printWindow.document.close();
-    printWindow.focus();
-    setTimeout(() => {
-      printWindow.print();
-      printWindow.close();
-    }, 500);
+    if (!user?.Token) {
+      toast.error('Usuário não autenticado.');
+      return;
+    }
+
+    try {
+      const response = await fetch('/api/report-card/generate', {
+        headers: { Authorization: `Bearer ${user.Token}` },
+      });
+
+      if (!response.ok) {
+        toast.error('Erro ao gerar boletim.');
+        return;
+      }
+
+      const blob = await response.blob();
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'boletim.pdf';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    } catch {
+      toast.error('Erro ao gerar boletim.');
+    }
   }
 
   const avg = grades.length > 0
