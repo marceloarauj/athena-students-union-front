@@ -10,7 +10,6 @@ import { Badge } from '@/components/ui/badge';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Download } from 'lucide-react';
-import Button from '@/components/ui/button';
 import { useReportCardLayout } from '@/features/reportCard/hooks/useReportCardLayout';
 import type { ReportCardLayoutConfig } from '@/features/reportCard/models/reportCardLayoutModel';
 
@@ -140,10 +139,13 @@ export default function GradesPage() {
           <h1 className='text-2xl font-bold text-foreground'>Boletim Escolar</h1>
           <p className='text-sm text-muted-foreground mt-1'>Acompanhe seu desempenho acadêmico.</p>
         </div>
-        <Button onClick={handleDownloadBoletim} className='gap-1.5 shrink-0'>
+        <button
+          onClick={handleDownloadBoletim}
+          className='flex items-center gap-1.5 px-4 py-2 rounded-lg bg-primary text-white text-sm font-medium hover:bg-primary/90 transition-colors shrink-0'
+        >
           <Download size={14} />
           Baixar Boletim
-        </Button>
+        </button>
       </div>
 
       {/* Stats */}
