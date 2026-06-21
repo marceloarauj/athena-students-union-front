@@ -1,5 +1,6 @@
 'use client';
 
+
 import { useInstitutionStore } from '@/entities/institution';
 import { useGrades } from '@/features/grades/hooks/useGrades';
 import { usePermissionGuard } from '@/features/auth/hooks/usePermissionGuard';
@@ -8,6 +9,87 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Skeleton } from '@/components/ui/skeleton';
+import { Download } from 'lucide-react';
+import Button from '@/components/ui/button';
+import { useReportCardLayout } from '@/features/reportCard/hooks/useReportCardLayout';
+import type { ReportCardLayoutConfig } from '@/features/reportCard/models/reportCardLayoutModel';
+
+function buildBoletimHtml(layout: ReportCardLayoutConfig, grades: GradeReport[]): string {
+  const components = layout.components
+    .filter(c => c.visible)
+    .map(c => {
+      let content = '';
+      switch (c.type) {
+        case 'logo':
+          content = `<img src="/images/logo.png" style="width:48px;height:48px;object-fit:contain" />`;
+          break;
+        case 'institution_name':
+          content = 'Athena Students Union';
+          break;
+        case 'student_name':
+          content = 'Nome do Aluno: João Silva';
+          break;
+        case 'class_info':
+          content = 'Turma: 3º Ano A • Turno: Manhã';
+          break;
+        case 'grades_table': {
+          const rows = grades.map(g => `
+            <tr>
+              <td style="border:1px solid #ccc;padding:4px 8px">${g.subject}</td>
+              <td style="border:1px solid #ccc;padding:4px 8px;text-align:center">${g.b1.toFixed(1)}</td>
+              <td style="border:1px solid #ccc;padding:4px 8px;text-align:center">${g.b2.toFixed(1)}</td>
+              <td style="border:1px solid #ccc;padding:4px 8px;text-align:center">${g.b3.toFixed(1)}</td>
+              <td style="border:1px solid #ccc;padding:4px 8px;text-align:center">${g.b4.toFixed(1)}</td>
+              <td style="border:1px solid #ccc;padding:4px 8px;text-align:center">${g.average.toFixed(1)}</td>
+              <td style="border:1px solid #ccc;padding:4px 8px;text-align:center">${g.status}</td>
+            </tr>`).join('');
+          content = `
+            <table style="border-collapse:collapse;width:100%">
+              <thead>
+                <tr>
+                  <th style="border:1px solid #ccc;padding:4px 8px;text-align:left">Disciplina</th>
+                  <th style="border:1px solid #ccc;padding:4px 8px;text-align:center">B1</th>
+                  <th style="border:1px solid #ccc;padding:4px 8px;text-align:center">B2</th>
+                  <th style="border:1px solid #ccc;padding:4px 8px;text-align:center">B3</th>
+                  <th style="border:1px solid #ccc;padding:4px 8px;text-align:center">B4</th>
+                  <th style="border:1px solid #ccc;padding:4px 8px;text-align:center">Média</th>
+                  <th style="border:1px solid #ccc;padding:4px 8px;text-align:center">Status</th>
+                </tr>
+              </thead>
+              <tbody>${rows}</tbody>
+            </table>`;
+          break;
+        }
+        case 'responsible_name':
+          content = 'Responsável: Maria Silva';
+          break;
+        case 'phone_number':
+          content = '(11) 99999-9999';
+          break;
+        case 'custom_text':
+          content = c.content ?? '';
+          break;
+      }
+      return `<div style="position:absolute;left:${c.x}px;top:${c.y}px;color:${c.color};font-size:${c.fontSize}px;font-weight:${c.fontWeight}">${content}</div>`;
+    })
+    .join('');
+
+  return `<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<style>
+  body { margin: 0; font-family: Arial, sans-serif; background: ${layout.pageBackground} }
+  @media print { body { -webkit-print-color-adjust: exact; } }
+</style>
+</head>
+<body>
+  <div style="position:relative;width:595px;min-height:842px;background:${layout.pageBackground}">
+    ${components}
+  </div>
+</body>
+</html>`;
+}
 
 const statusMap: Record<GradeStatus, { label: string; variant: 'success' | 'warning' | 'danger' }> = {
   approved: { label: 'Aprovado', variant: 'success' },
@@ -27,8 +109,23 @@ export default function GradesPage() {
   const allowed = usePermissionGuard('SHOW_SCREEN_SCORE');
   const { institution } = useInstitutionStore();
   const { grades, loading } = useGrades(institution?.alias ?? '');
+  const { layout } = useReportCardLayout(institution?.alias ?? '');
 
   if (!allowed) return null;
+
+  function handleDownloadBoletim() {
+    const printWindow = window.open('', '_blank');
+    if (!printWindow || !layout) return;
+
+    const html = buildBoletimHtml(layout, grades);
+    printWindow.document.write(html);
+    printWindow.document.close();
+    printWindow.focus();
+    setTimeout(() => {
+      printWindow.print();
+      printWindow.close();
+    }, 500);
+  }
 
   const avg = grades.length > 0
     ? grades.reduce((s, g) => s + g.average, 0) / grades.length
@@ -38,9 +135,15 @@ export default function GradesPage() {
 
   return (
     <div className='p-6 max-w-4xl mx-auto space-y-6'>
-      <div>
-        <h1 className='text-2xl font-bold text-foreground'>Boletim Escolar</h1>
-        <p className='text-sm text-muted-foreground mt-1'>Acompanhe seu desempenho acadêmico.</p>
+      <div className='flex items-start justify-between gap-4'>
+        <div>
+          <h1 className='text-2xl font-bold text-foreground'>Boletim Escolar</h1>
+          <p className='text-sm text-muted-foreground mt-1'>Acompanhe seu desempenho acadêmico.</p>
+        </div>
+        <Button onClick={handleDownloadBoletim} className='gap-1.5 shrink-0'>
+          <Download size={14} />
+          Baixar Boletim
+        </Button>
       </div>
 
       {/* Stats */}

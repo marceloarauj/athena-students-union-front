@@ -7,6 +7,7 @@ import {
   Calendar,
   CalendarCheck,
   CreditCard,
+  FileImage,
   GraduationCap,
   HeadphonesIcon,
   Home,
@@ -42,6 +43,7 @@ const NAV_ITEMS = [
   { label: 'Suporte',            path: 'support',            icon: <HeadphonesIcon size={18} />,  permission: 'SHOW_SCREEN_SUPPORT' },
   { label: 'Usuários',           path: 'users',              icon: <UserCircle2 size={18} />,     permission: 'SHOW_SCREEN_USERS' },
   { label: 'Configurações',      path: 'settings',           icon: <Settings size={18} />,        permission: 'SHOW_SCREEN_SETTINGS' },
+  { label: 'Visual de Arquivos', path: 'visual-files',       icon: <FileImage size={18} />,       permission: 'SHOW_SCREEN_SETTINGS' },
 ];
 
 export default function Drawer({ open, onClose }: DrawerProps) {

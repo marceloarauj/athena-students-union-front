@@ -1,0 +1,10 @@
+{
+  "pageBackground": "#ffffff",
+  "components": [
+    { "id": "logo", "type": "logo", "label": "Logo da Instituição", "x": 20, "y": 20, "color": "#1a1a1a", "visible": true, "fontSize": 14, "fontWeight": "normal" },
+    { "id": "institution_name", "type": "institution_name", "label": "Nome da Instituição", "x": 90, "y": 28, "color": "#1a1a1a", "visible": true, "fontSize": 20, "fontWeight": "bold" },
+    { "id": "student_name", "type": "student_name", "label": "Nome do Aluno", "x": 20, "y": 120, "color": "#1a1a1a", "visible": true, "fontSize": 14, "fontWeight": "bold" },
+    { "id": "class_info", "type": "class_info", "label": "Turma e Turno", "x": 20, "y": 145, "color": "#555555", "visible": true, "fontSize": 12, "fontWeight": "normal" },
+    { "id": "grades_table", "type": "grades_table", "label": "Tabela de Notas", "x": 20, "y": 180, "color": "#1a1a1a", "visible": true, "fontSize": 12, "fontWeight": "normal" }
+  ]
+}

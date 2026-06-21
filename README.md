@@ -51,3 +51,11 @@ src/
 | Escola / Turmas | [athena-institution-service](https://github.com/marceloarauj/athena-institution-service) |
 | Notificações | [athena-union-notification-api](https://github.com/marceloarauj/athena-union-notification-api) |
 | Documentação | [athena-docs](https://github.com/marceloarauj/athena-docs) |
+
+
+
+## Atualizar a versão no futuro:
+
+npm version patch   # bug fix:  1.0.0 → 1.0.1
+npm version minor   # feature:  1.0.1 → 1.1.0
+npm version major   # breaking: 1.1.0 → 2.0.0
